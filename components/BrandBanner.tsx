@@ -18,16 +18,12 @@ export default function BrandBanner() {
       />
 
       <span
-        className="absolute left-4 top-4 h-3.5 w-3.5 rotate-45 border border-brand/70 sm:left-8 sm:top-8"
-        aria-hidden="true"
-      />
-      <span
         className="absolute right-4 top-4 h-3.5 w-3.5 rotate-45 border border-brand/70 sm:right-8 sm:top-8"
         aria-hidden="true"
       />
 
-      <div className="relative flex flex-col items-center px-4 pb-16 pt-12 text-center sm:pb-20 sm:pt-16">
-        <BrandLogo variant="light" size="lg" />
+      <div className="relative flex items-center px-4 pb-16 pt-6 sm:px-8 sm:pb-20 sm:pt-8">
+        <BrandLogo variant="light" />
       </div>
     </div>
   );
