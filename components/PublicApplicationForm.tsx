@@ -83,6 +83,7 @@ const applicationSchema = z
     recordsDuringWeek: z.enum(["", "sim", "nao"]),
     availableHours: z.string().trim(),
     hasEquipment: z.enum(["", "sim", "nao"]),
+    equipmentDetails: z.string().trim(),
     socialProgram: z.string().trim(),
     videoLink: z.string().trim(),
     dailyRateValue: z.string(),
@@ -168,6 +169,13 @@ const applicationSchema = z
     }
 
     if (destination === "casting") {
+      if (!values.photos || values.photos.length === 0) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["photos"],
+          message: "Anexe pelo menos uma foto",
+        });
+      }
       if (values.photos && values.photos.length > MAX_CASTING_PHOTOS) {
         ctx.addIssue({
           code: "custom",
@@ -264,6 +272,7 @@ export default function PublicApplicationForm() {
       recordsDuringWeek: "",
       availableHours: "",
       hasEquipment: "",
+      equipmentDetails: "",
       socialProgram: "",
       videoLink: "",
       dailyRateValue: "",
@@ -330,6 +339,8 @@ export default function PublicApplicationForm() {
         const hasEquipment = toBoolOrUndefined(values.hasEquipment);
         if (hasEquipment !== undefined)
           formData.append("hasEquipment", String(hasEquipment));
+        if (values.equipmentDetails)
+          formData.append("equipmentDetails", values.equipmentDetails);
         const recordsDuringWeek = toBoolOrUndefined(values.recordsDuringWeek);
         if (recordsDuringWeek !== undefined)
           formData.append("recordsDuringWeek", String(recordsDuringWeek));
@@ -632,6 +643,17 @@ export default function PublicApplicationForm() {
               <BoolField label="Tem equipamento próprio?" {...register("hasEquipment")} />
             </div>
 
+            <Field
+              label="Se sim, quais equipamentos você possui?"
+              error={errors.equipmentDetails?.message}
+            >
+              <textarea
+                {...register("equipmentDetails")}
+                rows={2}
+                className={inputClass(!!errors.equipmentDetails)}
+              />
+            </Field>
+
             <Field label="Horários disponíveis" error={errors.availableHours?.message}>
               <input
                 type="text"
@@ -689,7 +711,11 @@ export default function PublicApplicationForm() {
             </Field>
 
             <SectionLabel>Anexos</SectionLabel>
-            <Field label="Fotos" error={errors.photos?.message as string | undefined}>
+            <Field
+              label="Fotos"
+              required
+              error={errors.photos?.message as string | undefined}
+            >
               <input
                 type="file"
                 multiple
