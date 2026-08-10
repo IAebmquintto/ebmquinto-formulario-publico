@@ -598,7 +598,7 @@ export default function PublicApplicationForm() {
               </ul>
             </div>
 
-            <SectionLabel>Perfil para casting</SectionLabel>
+            <SectionLabel>Cadastro de Casting</SectionLabel>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Field label="Bairro" error={errors.neighborhood?.message}>
                 <input
