@@ -958,7 +958,9 @@ function BoolField({
 } & UseFormRegisterReturn) {
   return (
     <label className="block">
-      <span className="text-sm font-medium text-foreground/80">{label}</span>
+      <span className="block min-h-10 text-sm font-medium text-foreground/80">
+        {label}
+      </span>
       <select
         name={name}
         onChange={onChange}
