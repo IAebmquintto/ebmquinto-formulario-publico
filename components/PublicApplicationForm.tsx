@@ -427,9 +427,10 @@ export default function PublicApplicationForm() {
   }
 
   const stateOptions = destination === "candidate" ? UF_OPTIONS : BRAZILIAN_STATE_NAMES;
-  const destinationLabel = desiredPosition
-    ? DESTINATION_LABELS[destination]
-    : null;
+  const destinationLabel =
+    desiredPosition && destination !== "casting"
+      ? DESTINATION_LABELS[destination]
+      : null;
 
   return (
     <form
@@ -570,6 +571,33 @@ export default function PublicApplicationForm() {
 
         {destination === "casting" && (
           <>
+            <div className="rounded-2xl border border-brand/30 bg-brand-soft/60 p-5 sm:p-6">
+              <p className="font-display text-lg font-medium text-brand-dark">
+                Cadastro de Casting
+              </p>
+              <p className="mt-2 text-sm text-foreground/80">
+                Quer aparecer no digital dos nossos clientes e mostrar seu potencial diante
+                das câmeras?
+              </p>
+              <ul className="mt-4 space-y-2 text-sm text-foreground/80">
+                <li className="flex gap-2">
+                  <span aria-hidden="true">🎬</span>
+                  <span>Não precisa ter experiência — basta gostar de se comunicar!</span>
+                </li>
+                <li className="flex gap-2">
+                  <span aria-hidden="true">💡</span>
+                  <span>
+                    Necessário ter 1 ou 2 turnos livres por semana e autorizar o uso da sua
+                    imagem.
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <span aria-hidden="true">💰</span>
+                  <span>Cachê pela diária (informado durante o contato).</span>
+                </li>
+              </ul>
+            </div>
+
             <SectionLabel>Perfil para casting</SectionLabel>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Field label="Bairro" error={errors.neighborhood?.message}>
@@ -867,9 +895,11 @@ export default function PublicApplicationForm() {
   );
 }
 
-const DESTINATION_LABELS: Record<ApplicationDestination, string> = {
-  candidate: "Currículo geral",
-  casting: "Perfil para casting",
+const DESTINATION_LABELS: Record<
+  Exclude<ApplicationDestination, "casting">,
+  string
+> = {
+  candidate: "Currículo",
   "content-producer": "Produção de conteúdo",
 };
 
