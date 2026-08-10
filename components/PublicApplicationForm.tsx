@@ -7,7 +7,10 @@ import { z } from "zod";
 import axios from "axios";
 import api from "@/lib/api";
 import BrandLogo from "@/components/BrandLogo";
-import { routeDesiredPosition } from "@/lib/desired-position-routing";
+import {
+  routeDesiredPosition,
+  type ApplicationDestination,
+} from "@/lib/desired-position-routing";
 import {
   ACCEPTED_CASTING_PHOTO_EXTENSIONS,
   ACCEPTED_CASTING_PHOTO_MIME_TYPES,
@@ -388,10 +391,10 @@ export default function PublicApplicationForm() {
 
   if (submitted) {
     return (
-      <div className="relative mx-auto max-w-xl rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
+      <div className="animate-rise-in relative mx-auto max-w-xl rounded-3xl border border-line bg-white p-10 text-center shadow-xl shadow-ink/5 sm:p-14">
         <BrandLogo />
-        <div className="mx-auto mb-4 mt-8 flex h-12 w-12 items-center justify-center rounded-full bg-green-50 text-green-600">
-          <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+        <div className="mx-auto mb-5 mt-10 flex h-14 w-14 items-center justify-center rounded-full bg-brand-soft text-brand-dark">
+          <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7" aria-hidden="true">
             <path
               d="M5 13l4 4L19 7"
               stroke="currentColor"
@@ -401,8 +404,10 @@ export default function PublicApplicationForm() {
             />
           </svg>
         </div>
-        <h2 className="text-lg font-semibold text-foreground">Candidatura enviada com sucesso!</h2>
-        <p className="mt-2 text-sm text-slate-600">
+        <h2 className="font-display text-2xl font-medium text-foreground">
+          Candidatura enviada com sucesso!
+        </h2>
+        <p className="mx-auto mt-3 max-w-sm text-sm text-foreground/60">
           Obrigado por se candidatar na EBM Quintto. Vamos analisar seu perfil e entrar em
           contato caso avance para as próximas etapas.
         </p>
@@ -411,31 +416,41 @@ export default function PublicApplicationForm() {
   }
 
   const stateOptions = destination === "candidate" ? UF_OPTIONS : BRAZILIAN_STATE_NAMES;
+  const destinationLabel = desiredPosition
+    ? DESTINATION_LABELS[destination]
+    : null;
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="relative mx-auto max-w-2xl space-y-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+      className="animate-rise-in relative mx-auto max-w-3xl space-y-8 rounded-3xl border border-line bg-white p-6 shadow-xl shadow-ink/5 sm:p-12"
     >
       <div>
-        <BrandLogo />
-        <h1 className="mt-6 text-2xl font-bold tracking-tight text-foreground">
-          Envie sua candidatura
-        </h1>
-        <p className="mt-1 text-sm text-slate-600">
-          Preencha seus dados e conte pra gente qual vaga ou área tem interesse.
-        </p>
-        <div className="mt-6 border-t border-slate-100" />
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-brand-dark">
+            Formulário de candidatura
+          </p>
+          {destinationLabel && (
+            <span className="rounded-full bg-brand-soft px-3 py-1 font-mono text-[11px] uppercase tracking-wide text-brand-dark">
+              {destinationLabel}
+            </span>
+          )}
+        </div>
+        <h2 className="mt-3 font-display text-2xl font-medium text-foreground sm:text-3xl">
+          Conte pra gente sobre você
+        </h2>
+        <div className="mt-6 border-t border-line" />
       </div>
 
       {serverError && (
-        <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+        <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
           {serverError}
         </div>
       )}
 
-      <div className="space-y-4">
+      <div className="space-y-6">
+        <SectionLabel>Dados pessoais</SectionLabel>
         <Field label="Nome completo" required error={errors.fullName?.message}>
           <input
             type="text"
@@ -503,6 +518,7 @@ export default function PublicApplicationForm() {
           </Field>
         </div>
 
+        <SectionLabel>Área de interesse</SectionLabel>
         <Field
           label="Qual a área de interesse?"
           required
@@ -543,6 +559,7 @@ export default function PublicApplicationForm() {
 
         {destination === "casting" && (
           <>
+            <SectionLabel>Perfil para casting</SectionLabel>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Field label="Bairro" error={errors.neighborhood?.message}>
                 <input
@@ -671,6 +688,7 @@ export default function PublicApplicationForm() {
               />
             </Field>
 
+            <SectionLabel>Anexos</SectionLabel>
             <Field label="Fotos" error={errors.photos?.message as string | undefined}>
               <input
                 type="file"
@@ -679,7 +697,7 @@ export default function PublicApplicationForm() {
                 {...register("photos")}
                 className={fileInputClass(!!errors.photos)}
               />
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs text-foreground/50">
                 Imagens, até {MAX_CASTING_PHOTO_SIZE_MB}MB cada, no máximo{" "}
                 {MAX_CASTING_PHOTOS} fotos.
               </p>
@@ -689,6 +707,7 @@ export default function PublicApplicationForm() {
 
         {destination === "content-producer" && (
           <>
+            <SectionLabel>Detalhes de produção de conteúdo</SectionLabel>
             <Field label="Área que cobre" error={errors.coverageArea?.message}>
               <input
                 type="text"
@@ -723,6 +742,8 @@ export default function PublicApplicationForm() {
             </div>
           </>
         )}
+
+        {destination !== "casting" && <SectionLabel>Sobre você</SectionLabel>}
 
         {destination !== "casting" && (
           <Field
@@ -768,36 +789,42 @@ export default function PublicApplicationForm() {
         )}
 
         {destination === "candidate" && (
-          <Field label="Currículo (PDF ou DOC)" required error={errors.resume?.message as string | undefined}>
-            <input
-              type="file"
-              accept={ACCEPTED_RESUME_EXTENSIONS}
-              {...register("resume")}
-              className={fileInputClass(!!errors.resume)}
-            />
-            <p className="mt-1 text-xs text-slate-500">
-              PDF ou Word (.doc/.docx), até {MAX_RESUME_SIZE_MB}MB.
-            </p>
-          </Field>
+          <>
+            <SectionLabel>Anexos</SectionLabel>
+            <Field label="Currículo (PDF ou DOC)" required error={errors.resume?.message as string | undefined}>
+              <input
+                type="file"
+                accept={ACCEPTED_RESUME_EXTENSIONS}
+                {...register("resume")}
+                className={fileInputClass(!!errors.resume)}
+              />
+              <p className="mt-1 text-xs text-foreground/50">
+                PDF ou Word (.doc/.docx), até {MAX_RESUME_SIZE_MB}MB.
+              </p>
+            </Field>
+          </>
         )}
 
         {destination === "content-producer" && (
-          <Field label="Currículo/portfólio (opcional)" error={errors.resume?.message as string | undefined}>
-            <input
-              type="file"
-              multiple
-              accept={ACCEPTED_CONTENT_PRODUCER_RESUME_EXTENSIONS}
-              {...register("resume")}
-              className={fileInputClass(!!errors.resume)}
-            />
-            <p className="mt-1 text-xs text-slate-500">
-              PDF, Word (.doc/.docx), PPTX ou imagem (JPG/PNG).
-            </p>
-          </Field>
+          <>
+            <SectionLabel>Anexos</SectionLabel>
+            <Field label="Currículo/portfólio (opcional)" error={errors.resume?.message as string | undefined}>
+              <input
+                type="file"
+                multiple
+                accept={ACCEPTED_CONTENT_PRODUCER_RESUME_EXTENSIONS}
+                {...register("resume")}
+                className={fileInputClass(!!errors.resume)}
+              />
+              <p className="mt-1 text-xs text-foreground/50">
+                PDF, Word (.doc/.docx), PPTX ou imagem (JPG/PNG).
+              </p>
+            </Field>
+          </>
         )}
       </div>
 
-      <p className="text-xs text-slate-500">
+      <p className="text-xs text-foreground/50">
         Ao enviar, você concorda que seus dados e anexos sejam usados pela EBM Quintto
         exclusivamente para fins de recrutamento e seleção. Eles não são compartilhados com
         terceiros e podem ser removidos mediante solicitação.
@@ -806,7 +833,7 @@ export default function PublicApplicationForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-full rounded-xl bg-brand px-4 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand/25 transition hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-xl hover:shadow-brand/30 disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-60 disabled:shadow-none"
       >
         {isSubmitting ? "Enviando..." : "Enviar candidatura"}
       </button>
@@ -814,18 +841,32 @@ export default function PublicApplicationForm() {
   );
 }
 
+const DESTINATION_LABELS: Record<ApplicationDestination, string> = {
+  candidate: "Currículo geral",
+  casting: "Perfil para casting",
+  "content-producer": "Produção de conteúdo",
+};
+
 function inputClass(hasError: boolean) {
   return [
-    "mt-1 block w-full rounded-lg border px-3 py-2 text-sm text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-brand/20",
-    hasError ? "border-red-400" : "border-slate-300",
+    "mt-1.5 block w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm text-foreground shadow-sm transition focus:outline-none focus:ring-2 focus:ring-brand/25",
+    hasError ? "border-red-400" : "border-line focus:border-brand/40",
   ].join(" ");
 }
 
 function fileInputClass(hasError: boolean) {
   return [
-    "mt-1 block w-full cursor-pointer rounded-lg border px-3 py-2 text-sm text-slate-700 shadow-sm file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:bg-brand-soft file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-brand-dark hover:file:bg-brand/20 focus:outline-none focus:ring-2 focus:ring-brand/20",
-    hasError ? "border-red-400" : "border-slate-300",
+    "mt-1.5 block w-full cursor-pointer rounded-xl border bg-white px-3.5 py-2.5 text-sm text-foreground/80 shadow-sm transition file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:bg-brand-soft file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-brand-dark hover:file:bg-brand/20 focus:outline-none focus:ring-2 focus:ring-brand/25",
+    hasError ? "border-red-400" : "border-line focus:border-brand/40",
   ].join(" ");
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="pt-2 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-brand-dark first:pt-0">
+      {children}
+    </p>
+  );
 }
 
 function Field({
@@ -841,7 +882,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="text-sm font-medium text-slate-700">
+      <span className="text-sm font-medium text-foreground/80">
         {label} {required && <span className="text-brand">*</span>}
       </span>
       {children}
@@ -861,14 +902,14 @@ function BoolField({
 } & UseFormRegisterReturn) {
   return (
     <label className="block">
-      <span className="text-sm font-medium text-slate-700">{label}</span>
+      <span className="text-sm font-medium text-foreground/80">{label}</span>
       <select
         name={name}
         onChange={onChange}
         onBlur={onBlur}
         ref={ref}
         defaultValue=""
-        className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
+        className="mt-1.5 block w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-sm text-foreground shadow-sm transition focus:border-brand/40 focus:outline-none focus:ring-2 focus:ring-brand/25"
       >
         <option value="">–</option>
         <option value="sim">Sim</option>

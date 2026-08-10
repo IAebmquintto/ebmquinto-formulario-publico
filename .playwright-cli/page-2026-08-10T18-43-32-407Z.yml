@@ -1,0 +1,208 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e7]:
+      - img "EBM Quintto" [ref=e8]
+      - paragraph [ref=e9]: EBM Quintto · Recrutamento
+      - heading "Venha fazer parte do nosso time" [level=1] [ref=e10]
+      - paragraph [ref=e11]: Preencha o formulário abaixo e conte pra gente qual vaga ou área desperta o seu interesse.
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - paragraph [ref=e17]: Formulário de candidatura
+          - generic [ref=e76]: Perfil para casting
+        - heading "Conte pra gente sobre você" [level=2] [ref=e18]
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: Dados pessoais
+        - generic [ref=e22]:
+          - generic [ref=e23]: Nome completo *
+          - textbox "Nome completo *" [ref=e24]:
+            - /placeholder: Seu nome completo
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - generic [ref=e27]: Data de nascimento *
+            - textbox "Data de nascimento *" [ref=e28]
+          - generic [ref=e29]:
+            - generic [ref=e30]: E-mail
+            - textbox "E-mail" [ref=e77]:
+              - /placeholder: seuemail@exemplo.com
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]: Telefone (DDD + número)
+            - textbox "Telefone (DDD + número)" [ref=e78]:
+              - /placeholder: (00) 00000-0000
+          - generic [ref=e36]:
+            - generic [ref=e37]: Cidade (onde reside) *
+            - textbox "Cidade (onde reside) *" [ref=e38]:
+              - /placeholder: Sua cidade
+          - generic [ref=e39]:
+            - generic [ref=e40]: Estado (onde reside) *
+            - combobox "Estado (onde reside) *" [ref=e41]:
+              - option "Selecione" [selected]
+              - option "Acre"
+              - option "Alagoas"
+              - option "Amapá"
+              - option "Amazonas"
+              - option "Bahia"
+              - option "Ceará"
+              - option "Distrito Federal"
+              - option "Espírito Santo"
+              - option "Goiás"
+              - option "Maranhão"
+              - option "Mato Grosso"
+              - option "Mato Grosso do Sul"
+              - option "Minas Gerais"
+              - option "Pará"
+              - option "Paraíba"
+              - option "Paraná"
+              - option "Pernambuco"
+              - option "Piauí"
+              - option "Rio de Janeiro"
+              - option "Rio Grande do Norte"
+              - option "Rio Grande do Sul"
+              - option "Rondônia"
+              - option "Roraima"
+              - option "Santa Catarina"
+              - option "São Paulo"
+              - option "Sergipe"
+              - option "Tocantins"
+        - paragraph [ref=e42]: Área de interesse
+        - generic [ref=e43]:
+          - generic [ref=e44]: Qual a área de interesse? *
+          - combobox "Qual a área de interesse? *" [ref=e45]:
+            - option "Selecione"
+            - option "ADM/FINANCEIRO - Analista"
+            - option "ADM/FINANCEIRO - Assistente"
+            - option "ADM/FINANCEIRO - Coordenador(a)"
+            - option "ADM/FINANCEIRO - Estágio"
+            - option "ADM/FINANCEIRO - Gerente"
+            - option "ATENDIMENTO"
+            - option "ATENDIMENTO - Assistente"
+            - option "ATENDIMENTO - Digital"
+            - option "B.I. - Analista"
+            - option "B.I. - Assistente"
+            - option "CRIAÇÃO - Redação"
+            - option "CRIAÇÃO - Redação - Estágio"
+            - option "CRIAÇÃO - Revisor(a)"
+            - option "CRIAÇÃO - Revisor(a) - Estágio"
+            - option "MÍDIA - Analista"
+            - option "MÍDIA - Assistente"
+            - option "MÍDIA - Estágio"
+            - option "MOTOBOY"
+            - option "OUTRO"
+            - option "PERFORMANCE - Analista"
+            - option "PERFORMANCE - Assistente"
+            - option "PLANEJAMENTO - Coordenador(a)"
+            - option "PLANEJAMENTO - Head"
+            - option "PLANEJAMENTO - Planner"
+            - option "PLANEJAMENTO - Social Media"
+            - option "PRODUÇÃO DE CONTEÚDO - Analista"
+            - option "PRODUÇÃO DE CONTEÚDO - Filmmaker (audio visual)"
+            - option "PRODUÇÃO ELETRÔNICA - Produtor(a)"
+            - option "PRODUÇÃO GRÁFICA - Produtor(a)"
+            - option "R.H. - Analista"
+            - option "R.H. - Assistente"
+            - option "RECEPÇÃO"
+            - option "SERVIÇOS GERAIS - Auxiliar"
+            - option "TRÁFEGO"
+            - option "Casting" [selected]
+            - option "TECH - IA & Automações"
+            - option "TECH - IA & Automações - Assistente"
+            - option "TECH - IA & Automações - Estágio"
+            - option "TECH - VIBE CODING"
+            - option "TECH - VIBE CODING - Assistente"
+            - option "TECH - VIBE CODING - Estágio"
+        - paragraph [ref=e79]: Perfil para casting
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]: Bairro
+            - textbox "Bairro" [ref=e83]
+          - generic [ref=e84]:
+            - generic [ref=e85]: Profissão
+            - textbox "Profissão" [ref=e86]
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - generic [ref=e89]: Instagram
+            - textbox "Instagram" [ref=e90]:
+              - /placeholder: "@seuusuario"
+          - generic [ref=e91]:
+            - generic [ref=e92]: TikTok
+            - textbox "TikTok" [ref=e93]:
+              - /placeholder: "@seuusuario"
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - generic [ref=e96]: CNH
+            - combobox "CNH" [ref=e97]:
+              - option "Selecione" [selected]
+              - option "NÃO"
+              - option "CATEGORIA - A"
+              - option "CATEGORIA - B"
+              - option "CATEGORIA - A e B"
+              - option "CATEGORIA - C,D ou E"
+          - generic [ref=e98]:
+            - generic [ref=e99]: Faixa etária
+            - combobox "Faixa etária" [ref=e100]:
+              - option "Selecione" [selected]
+              - option "Até 8 anos (acompanhado)"
+              - option "8 - 12 anos (acompanhado)"
+              - option "12 - 17 anos (acompanhado)"
+              - option "18 - 25 anos"
+              - option "26 - 35 anos"
+              - option "36 - 50 anos"
+              - option "50+"
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - text: Já gravou antes?
+            - combobox "Já gravou antes?" [ref=e103]:
+              - option "–" [selected]
+              - option "Sim"
+              - option "Não"
+          - generic [ref=e104]:
+            - text: Fala bem em frente à câmera?
+            - combobox "Fala bem em frente à câmera?" [ref=e105]:
+              - option "–" [selected]
+              - option "Sim"
+              - option "Não"
+          - generic [ref=e106]:
+            - text: Grava fim de semana?
+            - combobox "Grava fim de semana?" [ref=e107]:
+              - option "–" [selected]
+              - option "Sim"
+              - option "Não"
+          - generic [ref=e108]:
+            - text: Tem equipamento próprio?
+            - combobox "Tem equipamento próprio?" [ref=e109]:
+              - option "–" [selected]
+              - option "Sim"
+              - option "Não"
+        - generic [ref=e110]:
+          - generic [ref=e111]: Horários disponíveis
+          - textbox "Horários disponíveis" [ref=e112]:
+            - /placeholder: "Ex: manhãs e fins de semana"
+        - generic [ref=e113]:
+          - generic [ref=e114]:
+            - generic [ref=e115]: Recebe algum benefício de programa social?
+            - textbox "Recebe algum benefício de programa social?" [ref=e116]
+          - generic [ref=e117]:
+            - generic [ref=e118]: Valor da diária
+            - combobox "Valor da diária" [ref=e119]:
+              - option "Selecione" [selected]
+              - option "R$ 100"
+              - option "Entre R$ 100 e R$ 200"
+              - option "Entre R$ 200 e R$ 300"
+        - generic [ref=e120]:
+          - generic [ref=e121]: Link de vídeo de apresentação
+          - textbox "Link de vídeo de apresentação" [ref=e122]:
+            - /placeholder: https://...
+        - generic [ref=e123]:
+          - generic [ref=e124]: Relato de experiência
+          - textbox "Relato de experiência" [ref=e125]:
+            - /placeholder: Conte rapidamente sua experiência com casting/figuração
+        - paragraph [ref=e126]: Anexos
+        - generic [ref=e127]:
+          - generic [ref=e128]: Fotos
+          - button "Fotos Imagens, até 8MB cada, no máximo 5 fotos." [ref=e129] [cursor=pointer]
+          - paragraph [ref=e130]: Imagens, até 8MB cada, no máximo 5 fotos.
+      - paragraph [ref=e64]: Ao enviar, você concorda que seus dados e anexos sejam usados pela EBM Quintto exclusivamente para fins de recrutamento e seleção. Eles não são compartilhados com terceiros e podem ser removidos mediante solicitação.
+      - button "Enviar candidatura" [ref=e65]
+  - button "Open Next.js Dev Tools" [ref=e71] [cursor=pointer]
+  - alert [ref=e75]
