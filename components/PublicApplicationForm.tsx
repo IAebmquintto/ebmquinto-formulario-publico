@@ -572,10 +572,10 @@ export default function PublicApplicationForm() {
         {destination === "casting" && (
           <>
             <div className="rounded-2xl border border-brand/30 bg-brand-soft/60 p-5 sm:p-6">
-              <p className="font-display text-lg font-medium text-brand-dark">
+              <span className="inline-block rounded-full bg-white px-3 py-1 font-mono text-[11px] uppercase tracking-wide text-brand-dark">
                 Cadastro de Casting
-              </p>
-              <p className="mt-2 text-sm text-foreground/80">
+              </span>
+              <p className="mt-3 text-sm text-foreground/80">
                 Quer aparecer no digital dos nossos clientes e mostrar seu potencial diante
                 das câmeras?
               </p>
@@ -598,7 +598,7 @@ export default function PublicApplicationForm() {
               </ul>
             </div>
 
-            <SectionLabel>Cadastro de Casting</SectionLabel>
+            <SectionLabel>Perfil para casting</SectionLabel>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Field label="Bairro" error={errors.neighborhood?.message}>
                 <input
