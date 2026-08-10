@@ -7,7 +7,6 @@
   --color-brand-dark: #a97c1f;
   --color-brand-soft: #f6ead0;
   --color-ink: #15130f;
-  --color-ink-soft: #d8cdb8;
   --color-line: rgba(21, 19, 15, 0.12);
 }
 
@@ -18,7 +17,6 @@
   --color-brand-dark: var(--color-brand-dark);
   --color-brand-soft: var(--color-brand-soft);
   --color-ink: var(--color-ink);
-  --color-ink-soft: var(--color-ink-soft);
   --color-line: var(--color-line);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

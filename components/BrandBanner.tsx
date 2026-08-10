@@ -1,6 +1,6 @@
 import BrandLogo from "@/components/BrandLogo";
 
-/** Cabeçalho de marca no topo das páginas públicas: faixa escura com o logo e a chamada da candidatura. */
+/** Cabeçalho de marca no topo das páginas públicas: faixa escura com o logo em destaque. */
 export default function BrandBanner() {
   return (
     <div className="relative w-full overflow-hidden bg-ink">
@@ -26,18 +26,8 @@ export default function BrandBanner() {
         aria-hidden="true"
       />
 
-      <div className="relative flex flex-col items-center px-4 pb-20 pt-12 text-center sm:pb-24 sm:pt-16">
+      <div className="relative flex flex-col items-center px-4 pb-16 pt-12 text-center sm:pb-20 sm:pt-16">
         <BrandLogo variant="light" size="lg" />
-        <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.3em] text-brand sm:text-xs">
-          EBM Quintto &middot; Recrutamento
-        </p>
-        <h1 className="mt-3 max-w-xl text-balance font-display text-3xl font-medium text-background sm:text-4xl">
-          Venha fazer parte do nosso time
-        </h1>
-        <p className="mt-3 max-w-md text-balance text-sm text-ink-soft sm:text-base">
-          Preencha o formulário abaixo e conte pra gente qual vaga ou área desperta o seu
-          interesse.
-        </p>
       </div>
     </div>
   );
