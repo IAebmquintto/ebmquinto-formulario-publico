@@ -169,6 +169,34 @@ const applicationSchema = z
     }
 
     if (destination === "casting") {
+      if (!values.hasPriorExperience) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["hasPriorExperience"],
+          message: "Selecione uma opção",
+        });
+      }
+      if (!values.speaksToCamera) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["speaksToCamera"],
+          message: "Selecione uma opção",
+        });
+      }
+      if (!values.recordsDuringWeek) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["recordsDuringWeek"],
+          message: "Selecione uma opção",
+        });
+      }
+      if (!values.hasEquipment) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["hasEquipment"],
+          message: "Selecione uma opção",
+        });
+      }
       if (!values.photos || values.photos.length === 0) {
         ctx.addIssue({
           code: "custom",
@@ -439,18 +467,15 @@ export default function PublicApplicationForm() {
       className="animate-rise-in relative mx-auto max-w-3xl space-y-8 rounded-3xl border border-line bg-white p-6 shadow-xl shadow-ink/5 sm:p-12"
     >
       <div>
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-brand-dark">
-            Formulário de candidatura
-          </p>
-          {destinationLabel && (
+        {destinationLabel && (
+          <div className="mb-3 flex justify-end">
             <span className="rounded-full bg-brand-soft px-3 py-1 font-mono text-[11px] uppercase tracking-wide text-brand-dark">
               {destinationLabel}
             </span>
-          )}
-        </div>
-        <h2 className="mt-3 font-display text-2xl font-medium text-foreground sm:text-3xl">
-          Conte pra gente sobre você
+          </div>
+        )}
+        <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
+          Envie seu currículo
         </h2>
         <div className="mt-6 border-t border-line" />
       </div>
@@ -665,10 +690,30 @@ export default function PublicApplicationForm() {
             </div>
 
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-              <BoolField label="Já gravou antes?" {...register("hasPriorExperience")} />
-              <BoolField label="Fala bem em frente à câmera?" {...register("speaksToCamera")} />
-              <BoolField label="Grava fim de semana?" {...register("recordsDuringWeek")} />
-              <BoolField label="Tem equipamento próprio?" {...register("hasEquipment")} />
+              <BoolField
+                label="Já gravou antes?"
+                required
+                error={errors.hasPriorExperience?.message}
+                {...register("hasPriorExperience")}
+              />
+              <BoolField
+                label="Fala bem em frente à câmera?"
+                required
+                error={errors.speaksToCamera?.message}
+                {...register("speaksToCamera")}
+              />
+              <BoolField
+                label="Grava fim de semana?"
+                required
+                error={errors.recordsDuringWeek?.message}
+                {...register("recordsDuringWeek")}
+              />
+              <BoolField
+                label="Tem equipamento próprio?"
+                required
+                error={errors.hasEquipment?.message}
+                {...register("hasEquipment")}
+              />
             </div>
 
             <Field
@@ -718,7 +763,7 @@ export default function PublicApplicationForm() {
             </div>
 
             <Field
-              label="Link de vídeo de apresentação"
+              label="Link de vídeo de apresentação (opcional)"
               error={errors.videoLink?.message}
             >
               <input
@@ -727,6 +772,9 @@ export default function PublicApplicationForm() {
                 className={inputClass(!!errors.videoLink)}
                 placeholder="https://..."
               />
+              <p className="mt-1 text-xs text-foreground/50">
+                Se preferir, mande um vídeo rápido se apresentando.
+              </p>
             </Field>
 
             <Field label="Relato de experiência" error={errors.experienceReport?.message}>
@@ -949,17 +997,21 @@ function Field({
 
 function BoolField({
   label,
+  required,
+  error,
   name,
   onChange,
   onBlur,
   ref,
 }: {
   label: string;
+  required?: boolean;
+  error?: string;
 } & UseFormRegisterReturn) {
   return (
     <label className="block">
       <span className="block min-h-10 text-sm font-medium text-foreground/80">
-        {label}
+        {label} {required && <span className="text-brand">*</span>}
       </span>
       <select
         name={name}
@@ -967,12 +1019,13 @@ function BoolField({
         onBlur={onBlur}
         ref={ref}
         defaultValue=""
-        className="mt-1.5 block w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-sm text-foreground shadow-sm transition focus:border-brand/40 focus:outline-none focus:ring-2 focus:ring-brand/25"
+        className={inputClass(!!error)}
       >
         <option value="">–</option>
         <option value="sim">Sim</option>
         <option value="nao">Não</option>
       </select>
+      {error && <p className="mt-1 text-xs text-red-600">{error}</p>}
     </label>
   );
 }
