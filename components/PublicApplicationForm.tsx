@@ -464,7 +464,7 @@ export default function PublicApplicationForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="animate-rise-in relative mx-auto max-w-5xl space-y-8 rounded-3xl border border-line bg-white p-6 shadow-xl shadow-ink/5 sm:p-12"
+      className="animate-rise-in relative mx-auto max-w-3xl space-y-8 rounded-3xl border border-line bg-white p-6 shadow-xl shadow-ink/5 sm:p-12"
     >
       <div>
         {destinationLabel && (
@@ -556,46 +556,43 @@ export default function PublicApplicationForm() {
         </div>
 
         <SectionLabel>Área de interesse</SectionLabel>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Field
+          label="Qual a área de interesse?"
+          required
+          error={errors.desiredPosition?.message}
+        >
+          <select
+            {...register("desiredPosition")}
+            className={inputClass(!!errors.desiredPosition)}
+          >
+            <option value="">Selecione</option>
+            {DESIRED_POSITION_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </Field>
+
+        {destination !== "casting" && (
           <Field
-            label="Qual a área de interesse?"
+            label="Há quanto tempo atua nesta área?"
             required
-            error={errors.desiredPosition?.message}
-            className={destination === "casting" ? "sm:col-span-2" : undefined}
+            error={errors.experienceTime?.message}
           >
             <select
-              {...register("desiredPosition")}
-              className={inputClass(!!errors.desiredPosition)}
+              {...register("experienceTime")}
+              className={inputClass(!!errors.experienceTime)}
             >
               <option value="">Selecione</option>
-              {DESIRED_POSITION_OPTIONS.map((option) => (
+              {EXPERIENCE_TIME_OPTIONS.map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>
               ))}
             </select>
           </Field>
-
-          {destination !== "casting" && (
-            <Field
-              label="Há quanto tempo atua nesta área?"
-              required
-              error={errors.experienceTime?.message}
-            >
-              <select
-                {...register("experienceTime")}
-                className={inputClass(!!errors.experienceTime)}
-              >
-                <option value="">Selecione</option>
-                {EXPERIENCE_TIME_OPTIONS.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </Field>
-          )}
-        </div>
+        )}
 
         {destination === "casting" && (
           <>
@@ -730,30 +727,14 @@ export default function PublicApplicationForm() {
               />
             </Field>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Field label="Horários disponíveis" error={errors.availableHours?.message}>
-                <input
-                  type="text"
-                  {...register("availableHours")}
-                  className={inputClass(!!errors.availableHours)}
-                  placeholder="Ex: manhãs e fins de semana"
-                />
-              </Field>
-              <Field
-                label="Link de vídeo de apresentação (opcional)"
-                error={errors.videoLink?.message}
-              >
-                <input
-                  type="text"
-                  {...register("videoLink")}
-                  className={inputClass(!!errors.videoLink)}
-                  placeholder="https://..."
-                />
-                <p className="mt-1 text-xs text-foreground/50">
-                  Se preferir, mande um vídeo rápido se apresentando.
-                </p>
-              </Field>
-            </div>
+            <Field label="Horários disponíveis" error={errors.availableHours?.message}>
+              <input
+                type="text"
+                {...register("availableHours")}
+                className={inputClass(!!errors.availableHours)}
+                placeholder="Ex: manhãs e fins de semana"
+              />
+            </Field>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Field
@@ -780,6 +761,21 @@ export default function PublicApplicationForm() {
                 </select>
               </Field>
             </div>
+
+            <Field
+              label="Link de vídeo de apresentação (opcional)"
+              error={errors.videoLink?.message}
+            >
+              <input
+                type="text"
+                {...register("videoLink")}
+                className={inputClass(!!errors.videoLink)}
+                placeholder="https://..."
+              />
+              <p className="mt-1 text-xs text-foreground/50">
+                Se preferir, mande um vídeo rápido se apresentando.
+              </p>
+            </Field>
 
             <Field label="Relato de experiência" error={errors.experienceReport?.message}>
               <textarea
@@ -814,25 +810,23 @@ export default function PublicApplicationForm() {
         {destination === "content-producer" && (
           <>
             <SectionLabel>Detalhes de produção de conteúdo</SectionLabel>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Field label="Área que cobre" error={errors.coverageArea?.message}>
-                <input
-                  type="text"
-                  {...register("coverageArea")}
-                  className={inputClass(!!errors.coverageArea)}
-                  placeholder="Ex: Ceará todo, disponível para viagens"
-                />
-              </Field>
+            <Field label="Área que cobre" error={errors.coverageArea?.message}>
+              <input
+                type="text"
+                {...register("coverageArea")}
+                className={inputClass(!!errors.coverageArea)}
+                placeholder="Ex: Ceará todo, disponível para viagens"
+              />
+            </Field>
 
-              <Field label="Valor por cobertura" error={errors.eventRate?.message}>
-                <input
-                  type="text"
-                  {...register("eventRate")}
-                  className={inputClass(!!errors.eventRate)}
-                  placeholder="Ex: R$ 500 por evento"
-                />
-              </Field>
-            </div>
+            <Field label="Valor por cobertura" error={errors.eventRate?.message}>
+              <input
+                type="text"
+                {...register("eventRate")}
+                className={inputClass(!!errors.eventRate)}
+                placeholder="Ex: R$ 500 por evento"
+              />
+            </Field>
 
             <Field label="Equipamentos" error={errors.equipment?.message}>
               <textarea
@@ -854,31 +848,31 @@ export default function PublicApplicationForm() {
         {destination !== "casting" && <SectionLabel>Sobre você</SectionLabel>}
 
         {destination !== "casting" && (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Field
-              label="Caso possua um link para portfólio, LinkedIn, site pessoal, insira aqui"
-              error={errors.portfolioUrl?.message}
-            >
-              <input
-                type="text"
-                {...register("portfolioUrl")}
-                className={inputClass(!!errors.portfolioUrl)}
-                placeholder="https://linkedin.com/in/seuusuario"
-              />
-            </Field>
+          <Field
+            label="Caso possua um link para portfólio, LinkedIn, site pessoal, insira aqui"
+            error={errors.portfolioUrl?.message}
+          >
+            <input
+              type="text"
+              {...register("portfolioUrl")}
+              className={inputClass(!!errors.portfolioUrl)}
+              placeholder="https://linkedin.com/in/seuusuario"
+            />
+          </Field>
+        )}
 
-            <Field
-              label="Onde estuda ou trabalha atualmente?"
-              error={errors.currentOccupation?.message}
-            >
-              <input
-                type="text"
-                {...register("currentOccupation")}
-                className={inputClass(!!errors.currentOccupation)}
-                placeholder="Empresa, instituição ou 'não estou trabalhando/estudando'"
-              />
-            </Field>
-          </div>
+        {destination !== "casting" && (
+          <Field
+            label="Onde estuda ou trabalha atualmente?"
+            error={errors.currentOccupation?.message}
+          >
+            <input
+              type="text"
+              {...register("currentOccupation")}
+              className={inputClass(!!errors.currentOccupation)}
+              placeholder="Empresa, instituição ou 'não estou trabalhando/estudando'"
+            />
+          </Field>
         )}
 
         {destination !== "casting" && (
@@ -983,17 +977,15 @@ function Field({
   label,
   required,
   error,
-  className,
   children,
 }: {
   label: string;
   required?: boolean;
   error?: string;
-  className?: string;
   children: React.ReactNode;
 }) {
   return (
-    <label className={["block", className].filter(Boolean).join(" ")}>
+    <label className="block">
       <span className="text-sm font-medium text-foreground/80">
         {label} {required && <span className="text-brand">*</span>}
       </span>
