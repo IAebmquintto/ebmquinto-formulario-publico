@@ -123,16 +123,6 @@ const applicationSchema = z
           message: "Selecione uma opção",
         });
       }
-      if (
-        values.portfolioUrl &&
-        !z.string().url().safeParse(values.portfolioUrl).success
-      ) {
-        ctx.addIssue({
-          code: "custom",
-          path: ["portfolioUrl"],
-          message: "Link inválido",
-        });
-      }
       if (!values.currentRoutine.trim()) {
         ctx.addIssue({
           code: "custom",
@@ -444,13 +434,30 @@ export default function PublicApplicationForm() {
             />
           </svg>
         </div>
-        <h2 className="font-display text-2xl font-medium text-foreground">
-          Candidatura enviada com sucesso!
-        </h2>
-        <p className="mx-auto mt-3 max-w-sm text-sm text-foreground/60">
-          Obrigado por se candidatar na EBM Quintto. Vamos analisar seu perfil e entrar em
-          contato caso avance para as próximas etapas.
-        </p>
+        {destination === "content-producer" ? (
+          <>
+            <h2 className="font-display text-2xl font-medium text-foreground">
+              Candidatura enviada com sucesso!
+            </h2>
+            <p className="mx-auto mt-3 max-w-sm text-sm text-foreground/60">
+              Obrigado por se candidatar na EBM Quintto. Vamos analisar seu perfil e entrar em
+              contato caso avance para as próximas etapas.
+            </p>
+          </>
+        ) : (
+          <>
+            <h2 className="font-display text-2xl font-medium text-foreground">
+              Recebemos seu currículo com sucesso.
+            </h2>
+            <p className="mx-auto mt-3 max-w-sm text-sm text-foreground/60">
+              Agradecemos pelo seu interesse em fazer parte da EBMQUINTTO COMUNICAÇÃO.
+            </p>
+            <p className="mx-auto mt-3 max-w-sm text-sm text-foreground/60">
+              Vamos analisar suas informações e, caso seu perfil seja compatível com as
+              oportunidades disponíveis, entraremos em contato. Boa sorte! 🚀
+            </p>
+          </>
+        )}
       </div>
     );
   }
