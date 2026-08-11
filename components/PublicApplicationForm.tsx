@@ -520,7 +520,11 @@ export default function PublicApplicationForm() {
           </Field>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div
+          className={`grid grid-cols-1 gap-4 ${
+            destination === "casting" ? "sm:grid-cols-4" : "sm:grid-cols-3"
+          }`}
+        >
           <Field
             label="Telefone (DDD + número)"
             required={destination === "candidate"}
@@ -543,6 +547,16 @@ export default function PublicApplicationForm() {
             />
           </Field>
 
+          {destination === "casting" && (
+            <Field label="Bairro" error={errors.neighborhood?.message}>
+              <input
+                type="text"
+                {...register("neighborhood")}
+                className={inputClass(!!errors.neighborhood)}
+              />
+            </Field>
+          )}
+
           <Field label="Estado (onde reside)" required error={errors.state?.message}>
             <select {...register("state")} className={inputClass(!!errors.state)}>
               <option value="">Selecione</option>
@@ -554,16 +568,6 @@ export default function PublicApplicationForm() {
             </select>
           </Field>
         </div>
-
-        {destination === "casting" && (
-          <Field label="Bairro" error={errors.neighborhood?.message}>
-            <input
-              type="text"
-              {...register("neighborhood")}
-              className={inputClass(!!errors.neighborhood)}
-            />
-          </Field>
-        )}
 
         <SectionLabel>Área de interesse</SectionLabel>
         <Field
