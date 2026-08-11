@@ -578,7 +578,7 @@ export default function PublicApplicationForm() {
         >
           <select
             {...register("desiredPosition")}
-            className={inputClass(!!errors.desiredPosition)}
+            className={`${inputClass(!!errors.desiredPosition)} uppercase`}
           >
             <option value="">Selecione</option>
             {DESIRED_POSITION_OPTIONS.map((option) => (
