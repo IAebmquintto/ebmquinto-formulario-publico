@@ -527,7 +527,7 @@ export default function PublicApplicationForm() {
           }`}
         >
           <Field
-            label="Telefone (DDD + número)"
+            label="Telefone"
             required={destination === "candidate"}
             error={errors.phone?.message}
           >
