@@ -555,6 +555,16 @@ export default function PublicApplicationForm() {
           </Field>
         </div>
 
+        {destination === "casting" && (
+          <Field label="Bairro" error={errors.neighborhood?.message}>
+            <input
+              type="text"
+              {...register("neighborhood")}
+              className={inputClass(!!errors.neighborhood)}
+            />
+          </Field>
+        )}
+
         <SectionLabel>Área de interesse</SectionLabel>
         <Field
           label="Qual a área de interesse?"
@@ -624,22 +634,13 @@ export default function PublicApplicationForm() {
             </div>
 
             <SectionLabel>Perfil para casting</SectionLabel>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Field label="Bairro" error={errors.neighborhood?.message}>
-                <input
-                  type="text"
-                  {...register("neighborhood")}
-                  className={inputClass(!!errors.neighborhood)}
-                />
-              </Field>
-              <Field label="Profissão" error={errors.profession?.message}>
-                <input
-                  type="text"
-                  {...register("profession")}
-                  className={inputClass(!!errors.profession)}
-                />
-              </Field>
-            </div>
+            <Field label="Profissão" error={errors.profession?.message}>
+              <input
+                type="text"
+                {...register("profession")}
+                className={inputClass(!!errors.profession)}
+              />
+            </Field>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Field label="Instagram" error={errors.instagram?.message}>
