@@ -331,6 +331,7 @@ export default function PublicApplicationForm() {
         formData.append("email", values.email);
         formData.append("phone", values.phone);
         formData.append("city", values.city);
+        if (values.neighborhood) formData.append("neighborhood", values.neighborhood);
         formData.append("state", values.state);
         formData.append("desiredPosition", values.desiredPosition);
         formData.append("experienceTime", values.experienceTime);
@@ -522,7 +523,7 @@ export default function PublicApplicationForm() {
 
         <div
           className={`grid grid-cols-1 gap-4 ${
-            destination === "casting" ? "sm:grid-cols-4" : "sm:grid-cols-3"
+            destination === "content-producer" ? "sm:grid-cols-3" : "sm:grid-cols-4"
           }`}
         >
           <Field
@@ -547,7 +548,7 @@ export default function PublicApplicationForm() {
             />
           </Field>
 
-          {destination === "casting" && (
+          {destination !== "content-producer" && (
             <Field label="Bairro" error={errors.neighborhood?.message}>
               <input
                 type="text"
