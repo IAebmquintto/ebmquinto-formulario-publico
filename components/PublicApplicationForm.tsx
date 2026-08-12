@@ -561,6 +561,7 @@ export default function PublicApplicationForm() {
                 type="text"
                 {...register("neighborhood")}
                 className={inputClass(!!errors.neighborhood)}
+                placeholder="Seu bairro"
               />
             </Field>
           )}
