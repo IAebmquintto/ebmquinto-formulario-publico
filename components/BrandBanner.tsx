@@ -8,7 +8,7 @@ export default function BrandBanner() {
         className="absolute inset-0 opacity-25"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(135deg, rgba(201,150,43,0.4) 0px, rgba(201,150,43,0.4) 1px, transparent 1px, transparent 22px)",
+            "repeating-linear-gradient(135deg, rgba(255,195,12,0.4) 0px, rgba(255,195,12,0.4) 1px, transparent 1px, transparent 22px)",
         }}
         aria-hidden="true"
       />

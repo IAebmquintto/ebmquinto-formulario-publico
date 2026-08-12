@@ -421,8 +421,8 @@ export default function PublicApplicationForm() {
 
   if (submitted) {
     return (
-      <div className="animate-rise-in relative mx-auto max-w-xl rounded-3xl border border-line bg-white p-10 text-center shadow-xl shadow-ink/5 sm:p-14">
-        <BrandLogo />
+      <div className="animate-rise-in relative mx-auto max-w-xl rounded-3xl border border-line bg-ink p-10 text-center shadow-xl shadow-black/30 sm:p-14">
+        <BrandLogo variant="light" />
         <div className="mx-auto mb-5 mt-10 flex h-14 w-14 items-center justify-center rounded-full bg-brand-soft text-brand-dark">
           <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7" aria-hidden="true">
             <path
@@ -472,7 +472,7 @@ export default function PublicApplicationForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="animate-rise-in relative mx-auto max-w-3xl space-y-8 rounded-3xl border border-line bg-white p-6 shadow-xl shadow-ink/5 sm:p-12"
+      className="animate-rise-in relative mx-auto max-w-3xl space-y-8 rounded-3xl border border-line bg-ink p-6 shadow-xl shadow-black/30 sm:p-12"
     >
       <div>
         {destinationLabel && (
@@ -489,7 +489,7 @@ export default function PublicApplicationForm() {
       </div>
 
       {serverError && (
-        <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+        <div className="rounded-xl border border-red-900/50 bg-red-950/40 p-4 text-sm text-red-300">
           {serverError}
         </div>
       )}
@@ -620,7 +620,7 @@ export default function PublicApplicationForm() {
         {destination === "casting" && (
           <>
             <div className="rounded-2xl border border-brand/30 bg-brand-soft/60 p-5 sm:p-6">
-              <span className="inline-block rounded-full bg-white px-3 py-1 font-mono text-[11px] uppercase tracking-wide text-brand-dark">
+              <span className="inline-block rounded-full bg-ink px-3 py-1 font-mono text-[11px] uppercase tracking-wide text-brand-dark">
                 Cadastro de Casting
               </span>
               <p className="mt-3 text-sm text-foreground/80">
@@ -949,7 +949,7 @@ export default function PublicApplicationForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-xl bg-brand px-4 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand/25 transition hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-xl hover:shadow-brand/30 disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-60 disabled:shadow-none"
+        className="w-full rounded-xl bg-brand px-4 py-3.5 text-base font-semibold text-ink shadow-lg shadow-brand/25 transition hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-xl hover:shadow-brand/30 disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-60 disabled:shadow-none"
       >
         {isSubmitting ? "Enviando..." : "Enviar candidatura"}
       </button>
@@ -967,14 +967,14 @@ const DESTINATION_LABELS: Record<
 
 function inputClass(hasError: boolean) {
   return [
-    "mt-1.5 block w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm text-foreground shadow-sm transition focus:outline-none focus:ring-2 focus:ring-brand/25",
+    "mt-1.5 block w-full rounded-xl border bg-ink px-3.5 py-2.5 text-sm text-foreground shadow-sm transition focus:outline-none focus:ring-2 focus:ring-brand/25",
     hasError ? "border-red-400" : "border-line focus:border-brand/40",
   ].join(" ");
 }
 
 function fileInputClass(hasError: boolean) {
   return [
-    "mt-1.5 block w-full cursor-pointer rounded-xl border bg-white px-3.5 py-2.5 text-sm text-foreground/80 shadow-sm transition file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:bg-brand-soft file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-brand-dark hover:file:bg-brand/20 focus:outline-none focus:ring-2 focus:ring-brand/25",
+    "mt-1.5 block w-full cursor-pointer rounded-xl border bg-ink px-3.5 py-2.5 text-sm text-foreground/80 shadow-sm transition file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:bg-brand-soft file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-brand-dark hover:file:bg-brand/20 focus:outline-none focus:ring-2 focus:ring-brand/25",
     hasError ? "border-red-400" : "border-line focus:border-brand/40",
   ].join(" ");
 }
@@ -1004,7 +1004,7 @@ function Field({
         {label} {required && <span className="text-brand">*</span>}
       </span>
       {children}
-      {error && <p className="mt-1 text-xs text-red-600">{error}</p>}
+      {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
     </label>
   );
 }
@@ -1039,7 +1039,7 @@ function BoolField({
         <option value="sim">Sim</option>
         <option value="nao">Não</option>
       </select>
-      {error && <p className="mt-1 text-xs text-red-600">{error}</p>}
+      {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
     </label>
   );
 }
