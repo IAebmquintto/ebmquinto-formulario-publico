@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess | ForEach-Object { Stop-Process -Id $_ -Force })",
+      "Bash(git commit -m ' *)",
+      "Bash(npx --yes playwright screenshot --wait-for-selector 'text=Envie seu currículo' --full-page --viewport-size 1280,900 http://localhost:3000 'C:\\\\Users\\\\Imac\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Imac-ebmquinto-formulario-publico\\\\81996b4f-de47-4312-ab3b-b42a8df07363\\\\scratchpad/dark-identity-full.png')",
+      "Bash(npx --yes playwright cli -s=theme open http://localhost:3000)",
+      "Bash(npx --yes playwright cli -s=theme resize 1280 900)",
+      "Bash(npx --yes playwright cli -s=theme select \"select[name=desiredPosition]\" \"Casting\")",
+      "Bash(npx --yes playwright cli -s=theme click \"text=Enviar candidatura\")",
+      "Bash(npx --yes playwright cli -s=theme screenshot --full-page --filename __TRACKED_VAR__/dark-casting-errors.png)",
+      "Bash(npx --yes playwright cli -s=theme route \"**/casting-profiles\" --status 201 --body \"{}\" --content-type \"application/json\")",
+      "Bash(npx --yes playwright cli -s=theme fill \"input[name=fullName]\" \"Teste Tema\")",
+      "Bash(npx --yes playwright cli -s=theme fill \"input[name=birthDate]\" \"1998-01-01\")",
+      "Bash(npx --yes playwright cli -s=theme fill \"input[name=city]\" \"Fortaleza\")",
+      "Bash(npx --yes playwright cli -s=theme select \"select[name=state]\" \"Ceará\")",
+      "Bash(npx --yes playwright cli -s=theme click \"input[name=photos]\")",
+      "Bash(npx --yes playwright cli -s=theme upload 'C:\\\\Users\\\\Imac\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Imac-ebmquinto-formulario-publico\\\\81996b4f-de47-4312-ab3b-b42a8df07363\\\\scratchpad/dummy.jpg')",
+      "Bash(npx --yes playwright cli -s=theme screenshot --filename 'C:\\\\Users\\\\Imac\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Imac-ebmquinto-formulario-publico\\\\81996b4f-de47-4312-ab3b-b42a8df07363\\\\scratchpad/dark-success.png')",
+      "Bash(npx --yes playwright cli -s=theme close)"
+    ]
+  }
+}
