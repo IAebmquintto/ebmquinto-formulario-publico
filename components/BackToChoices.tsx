@@ -4,9 +4,11 @@ export default function BackToChoices() {
   return (
     <Link
       href="/"
-      className="mb-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-foreground/50 transition hover:text-brand"
+      aria-label="Voltar"
+      title="Voltar"
+      className="mb-4 flex h-9 w-9 items-center justify-center rounded-full border border-line text-foreground/60 transition hover:border-brand/40 hover:text-brand"
     >
-      <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden="true">
         <path
           d="M19 12H5M11 18l-6-6 6-6"
           stroke="currentColor"
@@ -15,7 +17,6 @@ export default function BackToChoices() {
           strokeLinejoin="round"
         />
       </svg>
-      Voltar
     </Link>
   );
 }
