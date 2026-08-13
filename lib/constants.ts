@@ -41,7 +41,6 @@ export const DESIRED_POSITION_OPTIONS = [
   "ATENDIMENTO - Digital",
   "B.I. - Analista",
   "B.I. - Assistente",
-  "Casting",
   "CRIAÇÃO - Redação",
   "CRIAÇÃO - Redação - Estágio",
   "CRIAÇÃO - Revisor(a)",
@@ -183,3 +182,47 @@ export const ACCEPTED_CONTENT_PRODUCER_RESUME_MIME_TYPES = [
 
 export const ACCEPTED_CONTENT_PRODUCER_RESUME_EXTENSIONS =
   ".pdf,.doc,.docx,.pptx,.jpg,.jpeg,.png";
+
+/** Opções fixas do dropdown "Segmento" (fornecedores). */
+export const SUPPLIER_SEGMENT_OPTIONS = [
+  "Brindes",
+  "PROMO / ATIVAÇÃO",
+  "Ilustração",
+  "Fotografia",
+  "Comunicação Visual",
+  "Gráfica Offset",
+  "Gráfica rápida",
+  "Influenciador(a)",
+  "Produtora de Áudio",
+  "Produtora de Vídeo",
+  "Vídeo Maker",
+  "VEÍCULO - Digital",
+  "VEÍCULO - Mídia OOH/DOOH",
+  "VEÍCULO - Rádio",
+  "VEÍCULO - TV aberta",
+  "VEÍCULO - TV Fechada",
+  "Outro",
+  "Tecnologia - Soluções digitais",
+] as const;
+
+/** Tipos de arquivo aceitos para o upload do mídia kit de fornecedores. */
+export const ACCEPTED_SUPPLIER_MEDIA_MIME_TYPES = [
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/gif",
+  "application/pdf",
+  "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  "application/x-zip-compressed",
+  "application/zip",
+  "application/x-rar-compressed",
+  "application/vnd.rar",
+] as const;
+
+export const ACCEPTED_SUPPLIER_MEDIA_EXTENSIONS =
+  ".jpg,.jpeg,.png,.webp,.gif,.pdf,.pptx,.zip,.rar";
+
+export const MAX_SUPPLIER_MEDIA_SIZE_MB = 10;
+export const MAX_SUPPLIER_MEDIA_SIZE_BYTES =
+  MAX_SUPPLIER_MEDIA_SIZE_MB * 1024 * 1024;
+export const MAX_SUPPLIER_MEDIA_FILES = 5;
