@@ -24,7 +24,12 @@
       "Bash(npx --yes playwright cli -s=sel resize 1280 900)",
       "Bash(npx --yes playwright cli -s=sel click \"select[name=state]\")",
       "Bash(npx --yes playwright cli -s=sel screenshot --filename __TRACKED_VAR__/select-open.png)",
-      "Bash(npx --yes playwright cli -s=sel close)"
+      "Bash(npx --yes playwright cli -s=sel close)",
+      "Bash(npx --yes playwright cli -s=check2 open https://ebmquinto-formulario-publico-production.up.railway.app)",
+      "Bash(npx --yes playwright cli -s=check2 resize 1280 900)",
+      "Bash(npx --yes playwright cli -s=check2 click \"select[name=state]\")",
+      "Bash(npx --yes playwright cli -s=check2 screenshot --filename __TRACKED_VAR__/prod-select-check.png)",
+      "Bash(npx --yes playwright cli -s=check2 close)"
     ]
   }
 }
