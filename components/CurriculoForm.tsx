@@ -300,6 +300,7 @@ export default function CurriculoForm() {
           <Field
             label="Caso possua um link para portfólio, LinkedIn, site pessoal, insira aqui"
             error={errors.portfolioUrl?.message}
+            labelClassName="block min-h-10"
           >
             <input
               type="text"
@@ -312,6 +313,7 @@ export default function CurriculoForm() {
           <Field
             label="Onde estuda ou trabalha atualmente?"
             error={errors.currentOccupation?.message}
+            labelClassName="block min-h-10"
           >
             <input
               type="text"

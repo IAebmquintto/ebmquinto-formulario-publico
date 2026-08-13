@@ -26,16 +26,22 @@ export function Field({
   label,
   required,
   error,
+  labelClassName,
   children,
 }: {
   label: string;
   required?: boolean;
   error?: string;
+  labelClassName?: string;
   children: React.ReactNode;
 }) {
   return (
     <label className="block">
-      <span className="text-sm font-medium text-foreground/80">
+      <span
+        className={["text-sm font-medium text-foreground/80", labelClassName]
+          .filter(Boolean)
+          .join(" ")}
+      >
         {label} {required && <span className="text-brand">*</span>}
       </span>
       {children}
