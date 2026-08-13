@@ -7,6 +7,7 @@ import { z } from "zod";
 import axios from "axios";
 import api from "@/lib/api";
 import BrandLogo from "@/components/BrandLogo";
+import BackToChoices from "@/components/BackToChoices";
 import { Field, SectionLabel, fileInputClass, inputClass } from "@/components/form/fields";
 import {
   ACCEPTED_SUPPLIER_MEDIA_EXTENSIONS,
@@ -39,7 +40,6 @@ const fornecedorSchema = z
     website: z.string().trim(),
     address: z.string().trim(),
     differentials: z.string().trim(),
-    notes: z.string().trim(),
     media: fileListOrUndefined(),
   })
   .superRefine((values, ctx) => {
@@ -99,7 +99,6 @@ export default function FornecedoresForm() {
       website: "",
       address: "",
       differentials: "",
-      notes: "",
     },
   });
 
@@ -117,7 +116,6 @@ export default function FornecedoresForm() {
       if (values.website) formData.append("website", values.website);
       if (values.address) formData.append("address", values.address);
       if (values.differentials) formData.append("differentials", values.differentials);
-      if (values.notes) formData.append("notes", values.notes);
       if (values.media) {
         Array.from(values.media).forEach((file) => formData.append("media", file));
       }
@@ -169,6 +167,7 @@ export default function FornecedoresForm() {
       className="animate-rise-in relative mx-auto max-w-3xl space-y-8 rounded-3xl border border-line bg-ink p-6 shadow-xl shadow-black/30 sm:p-12"
     >
       <div>
+        <BackToChoices />
         <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
           Cadastro de fornecedor
         </h2>
@@ -282,15 +281,6 @@ export default function FornecedoresForm() {
             rows={3}
             className={inputClass(!!errors.differentials)}
             placeholder="O que destaca sua empresa dos concorrentes"
-          />
-        </Field>
-
-        <Field label="Observações" error={errors.notes?.message}>
-          <textarea
-            {...register("notes")}
-            rows={3}
-            className={inputClass(!!errors.notes)}
-            placeholder="Alguma informação extra que queira contar"
           />
         </Field>
 

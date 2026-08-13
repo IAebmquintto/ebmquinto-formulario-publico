@@ -7,6 +7,7 @@ import { z } from "zod";
 import axios from "axios";
 import api from "@/lib/api";
 import BrandLogo from "@/components/BrandLogo";
+import BackToChoices from "@/components/BackToChoices";
 import { Field, SectionLabel, fileInputClass, inputClass } from "@/components/form/fields";
 import {
   ACCEPTED_RESUME_EXTENSIONS,
@@ -172,6 +173,7 @@ export default function CurriculoForm() {
       className="animate-rise-in relative mx-auto max-w-3xl space-y-8 rounded-3xl border border-line bg-ink p-6 shadow-xl shadow-black/30 sm:p-12"
     >
       <div>
+        <BackToChoices />
         <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
           Envie seu currículo
         </h2>

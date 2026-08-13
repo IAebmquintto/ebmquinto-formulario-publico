@@ -7,6 +7,7 @@ import { z } from "zod";
 import axios from "axios";
 import api from "@/lib/api";
 import BrandLogo from "@/components/BrandLogo";
+import BackToChoices from "@/components/BackToChoices";
 import {
   BoolField,
   Field,
@@ -260,6 +261,7 @@ export default function CastingForm() {
       className="animate-rise-in relative mx-auto max-w-3xl space-y-8 rounded-3xl border border-line bg-ink p-6 shadow-xl shadow-black/30 sm:p-12"
     >
       <div>
+        <BackToChoices />
         <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
           Cadastro para Casting
         </h2>
@@ -272,29 +274,44 @@ export default function CastingForm() {
         </div>
       )}
 
-      <div className="rounded-2xl border border-brand/30 bg-brand-soft/60 p-5 sm:p-6">
-        <span className="inline-block rounded-full bg-ink px-3 py-1 font-mono text-[11px] uppercase tracking-wide text-brand-dark">
-          Cadastro de Casting
-        </span>
-        <p className="mt-3 text-sm text-foreground/80">
+      <div className="rounded-2xl border border-brand/30 bg-brand-soft/60 p-6 sm:p-7">
+        <p className="text-base font-medium text-foreground sm:text-lg">
           Quer aparecer no digital dos nossos clientes e mostrar seu potencial diante das
           câmeras?
         </p>
-        <ul className="mt-4 space-y-2 text-sm text-foreground/80">
-          <li className="flex gap-2">
-            <span aria-hidden="true">🎬</span>
-            <span>Não precisa ter experiência — basta gostar de se comunicar!</span>
-          </li>
-          <li className="flex gap-2">
-            <span aria-hidden="true">💡</span>
-            <span>
-              Necessário ter 1 ou 2 turnos livres por semana e autorizar o uso da sua
-              imagem.
+        <ul className="mt-5 space-y-4">
+          <li className="flex items-center gap-3">
+            <span
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-base"
+              aria-hidden="true"
+            >
+              🎬
+            </span>
+            <span className="text-sm text-foreground/80">
+              Não precisa ter experiência — basta gostar de se comunicar!
             </span>
           </li>
-          <li className="flex gap-2">
-            <span aria-hidden="true">💰</span>
-            <span>Cachê pela diária (informado durante o contato).</span>
+          <li className="flex items-center gap-3">
+            <span
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-base"
+              aria-hidden="true"
+            >
+              💡
+            </span>
+            <span className="text-sm text-foreground/80">
+              Necessário ter 1 ou 2 turnos livres por semana e autorizar o uso da sua imagem.
+            </span>
+          </li>
+          <li className="flex items-center gap-3">
+            <span
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-base"
+              aria-hidden="true"
+            >
+              💰
+            </span>
+            <span className="text-sm text-foreground/80">
+              Cachê pela diária (informado durante o contato).
+            </span>
           </li>
         </ul>
       </div>
