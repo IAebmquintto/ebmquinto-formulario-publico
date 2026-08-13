@@ -17,7 +17,8 @@
       "Bash(npx --yes playwright cli -s=theme click \"input[name=photos]\")",
       "Bash(npx --yes playwright cli -s=theme upload 'C:\\\\Users\\\\Imac\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Imac-ebmquinto-formulario-publico\\\\81996b4f-de47-4312-ab3b-b42a8df07363\\\\scratchpad/dummy.jpg')",
       "Bash(npx --yes playwright cli -s=theme screenshot --filename 'C:\\\\Users\\\\Imac\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Imac-ebmquinto-formulario-publico\\\\81996b4f-de47-4312-ab3b-b42a8df07363\\\\scratchpad/dark-success.png')",
-      "Bash(npx --yes playwright cli -s=theme close)"
+      "Bash(npx --yes playwright cli -s=theme close)",
+      "Bash(npx --yes playwright screenshot --wait-for-selector 'text=Envie seu currículo' --viewport-size 1280,700 http://localhost:3000 'C:\\\\Users\\\\Imac\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Imac-ebmquinto-formulario-publico\\\\81996b4f-de47-4312-ab3b-b42a8df07363\\\\scratchpad/fields-visible.png')"
     ]
   }
 }
