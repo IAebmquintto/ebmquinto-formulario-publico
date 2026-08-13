@@ -2,14 +2,14 @@ import type { UseFormRegisterReturn } from "react-hook-form";
 
 export function inputClass(hasError: boolean) {
   return [
-    "mt-1.5 block w-full rounded-xl border bg-white/[0.06] px-3.5 py-2.5 text-sm text-foreground shadow-sm transition focus:bg-white/[0.09] focus:outline-none focus:ring-2 focus:ring-brand/25",
+    "mt-1.5 block w-full rounded-xl border bg-white/[0.06] px-3.5 py-2.5 text-sm text-foreground shadow-sm transition-all duration-200 ease-out focus:bg-white/[0.09] focus:outline-none focus:ring-4 focus:ring-brand/15",
     hasError ? "border-red-400" : "border-white/15 focus:border-brand/40",
   ].join(" ");
 }
 
 export function fileInputClass(hasError: boolean) {
   return [
-    "mt-1.5 block w-full cursor-pointer rounded-xl border bg-white/[0.06] px-3.5 py-2.5 text-sm text-foreground/80 shadow-sm transition file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:bg-brand-soft file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-brand-dark hover:file:bg-brand/20 focus:outline-none focus:ring-2 focus:ring-brand/25",
+    "mt-1.5 block w-full cursor-pointer rounded-xl border bg-white/[0.06] px-3.5 py-2.5 text-sm text-foreground/80 shadow-sm transition-all duration-200 ease-out file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:bg-brand-soft file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-brand-dark file:transition-colors hover:file:bg-brand/20 focus:outline-none focus:ring-4 focus:ring-brand/15",
     hasError ? "border-red-400" : "border-white/15 focus:border-brand/40",
   ].join(" ");
 }

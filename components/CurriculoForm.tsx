@@ -145,6 +145,8 @@ export default function CurriculoForm() {
           <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7" aria-hidden="true">
             <path
               d="M5 13l4 4L19 7"
+              pathLength={1}
+              className="animate-draw-check"
               stroke="currentColor"
               strokeWidth={2.5}
               strokeLinecap="round"
@@ -364,7 +366,7 @@ export default function CurriculoForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-xl bg-brand px-4 py-3.5 text-base font-semibold text-ink shadow-lg shadow-brand/25 transition hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-xl hover:shadow-brand/30 disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-60 disabled:shadow-none"
+        className="w-full rounded-xl bg-brand px-4 py-3.5 text-base font-semibold text-ink shadow-lg shadow-brand/25 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-xl hover:shadow-brand/30 active:translate-y-0 active:scale-[0.98] active:shadow-md disabled:cursor-not-allowed disabled:translate-y-0 disabled:scale-100 disabled:opacity-60 disabled:shadow-none"
       >
         {isSubmitting ? "Enviando..." : "Enviar candidatura"}
       </button>

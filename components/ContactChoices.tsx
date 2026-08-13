@@ -62,13 +62,14 @@ const CHOICES = [
 export default function ContactChoices() {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      {CHOICES.map((choice) => (
+      {CHOICES.map((choice, index) => (
         <Link
           key={choice.href}
           href={choice.href}
-          className="group flex flex-col rounded-2xl border border-line bg-white/[0.04] p-6 transition hover:-translate-y-0.5 hover:border-brand/40 hover:bg-white/[0.07]"
+          style={{ animationDelay: `${index * 90}ms` }}
+          className="animate-rise-in group flex flex-col rounded-2xl border border-line bg-white/[0.04] p-6 opacity-0 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-brand/40 hover:bg-white/[0.07] active:translate-y-0 active:scale-[0.98]"
         >
-          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-soft text-brand transition group-hover:bg-brand group-hover:text-ink">
+          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-soft text-brand transition-all duration-200 ease-out group-hover:scale-110 group-hover:bg-brand group-hover:text-ink">
             <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
               {choice.icon}
             </svg>

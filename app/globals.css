@@ -50,8 +50,45 @@ select option {
   animation: rise-in 0.6s ease-out both;
 }
 
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.32;
+    transform: scale(1.08);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 7s ease-in-out infinite;
+}
+
+@keyframes draw-check {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw-check {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw-check 0.5s ease-out 0.2s forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-rise-in {
+  .animate-rise-in,
+  .animate-glow-pulse,
+  .animate-draw-check {
     animation: none;
+  }
+
+  .animate-draw-check {
+    stroke-dashoffset: 0;
   }
 }

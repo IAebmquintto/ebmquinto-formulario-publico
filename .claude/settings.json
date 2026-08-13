@@ -95,7 +95,18 @@
       "Bash(npx --yes playwright cli -s=t4 select \"select[name=segment]\" \"Fotografia\")",
       "Bash(npx --yes playwright cli -s=t4 goto https://ebmquinto-formulario-publico-production.up.railway.app/producao-de-conteudo)",
       "Bash(npx --yes playwright cli -s=t4 fill \"input[name=fullName]\" \"TESTE 4 AREAS - Producao\")",
-      "Bash(npx --yes playwright cli -s=t4 close)"
+      "Bash(npx --yes playwright cli -s=t4 close)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)",
+      "Bash(npx playwright-cli *)",
+      "Bash(node \"C:\\\\Users\\\\Imac\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Imac-ebmquinto-formulario-publico\\\\81996b4f-de47-4312-ab3b-b42a8df07363\\\\scratchpad\\\\check.mjs\")",
+      "Bash(npm root *)",
+      "Bash(NODE_PATH=\"C:\\\\Users\\\\Imac\\\\AppData\\\\Local\\\\npm-cache\\\\_npx\\\\e41f203b7505f1fb\\\\node_modules\" node \"C:\\\\Users\\\\Imac\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Imac-ebmquinto-formulario-publico\\\\81996b4f-de47-4312-ab3b-b42a8df07363\\\\scratchpad\\\\check.mjs\")",
+      "Bash(cp \"C:\\\\Users\\\\Imac\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Imac-ebmquinto-formulario-publico\\\\81996b4f-de47-4312-ab3b-b42a8df07363\\\\scratchpad\\\\check.mjs\" \"C:\\\\Users\\\\Imac\\\\AppData\\\\Local\\\\npm-cache\\\\_npx\\\\e41f203b7505f1fb\\\\check.mjs\")",
+      "Bash(sed -i 's#C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\Imac\\\\\\\\\\\\\\\\AppData\\\\\\\\\\\\\\\\Local\\\\\\\\\\\\\\\\npm-cache\\\\\\\\\\\\\\\\_npx\\\\\\\\\\\\\\\\e41f203b7505f1fb\\\\\\\\\\\\\\\\node_modules\\\\\\\\\\\\\\\\playwright\\\\\\\\\\\\\\\\index.mjs#playwright#' check.mjs)",
+      "Bash(node check.mjs)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Imac\\AppData\\Local\\npm-cache\\_npx\\e41f203b7505f1fb"
     ]
   }
 }
