@@ -4,7 +4,6 @@ const CHOICES = [
   {
     href: "/curriculo",
     title: "Quero enviar meu currículo",
-    description: "Envie seus dados e concorra às vagas abertas na EBM Quintto.",
     icon: (
       <path
         d="M8 3h6l4 4v13a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm5 0v5h5M9 12h6M9 15.5h6M9 8.5h2"
@@ -18,7 +17,6 @@ const CHOICES = [
   {
     href: "/casting",
     title: "Quero fazer casting",
-    description: "Cadastre seu perfil para aparecer no digital dos nossos clientes.",
     icon: (
       <path
         d="M3 8.5 21 8.5M3 8.5v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-10M3 8.5l2-4.5h14l2 4.5M7.5 4l1.3 4.5M12 4l1 4.5M16.5 4l1.3 4.5"
@@ -32,7 +30,6 @@ const CHOICES = [
   {
     href: "/fornecedores",
     title: "Sou fornecedor(a)",
-    description: "Cadastre sua empresa para futuras parcerias comerciais.",
     icon: (
       <path
         d="M4 21V8l8-4 8 4v13M4 21h16M9 21v-6h6v6M9 12h.01M15 12h.01M12 12h.01M9 9h.01M15 9h.01M12 9h.01"
@@ -46,7 +43,6 @@ const CHOICES = [
   {
     href: "/producao-de-conteudo",
     title: "Produção de conteúdo",
-    description: "Capta, edita ou cobre eventos? Cadastre seu perfil.",
     icon: (
       <path
         d="M3 7a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7ZM14 10l6-3.5v11L14 14"
@@ -77,7 +73,6 @@ export default function ContactChoices() {
           <span className="mt-4 font-display text-base font-medium text-foreground">
             {choice.title}
           </span>
-          <span className="mt-2 text-sm text-foreground/60">{choice.description}</span>
           <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-wide text-brand">
             Começar
             <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 transition group-hover:translate-x-0.5">
