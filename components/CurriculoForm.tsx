@@ -219,7 +219,12 @@ export default function CurriculoForm() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
-          <Field label="Telefone" required error={errors.phone?.message}>
+          <Field
+            label="Telefone"
+            labelClassName="block min-h-10"
+            required
+            error={errors.phone?.message}
+          >
             <input
               type="text"
               {...register("phone")}
@@ -228,7 +233,12 @@ export default function CurriculoForm() {
             />
           </Field>
 
-          <Field label="Cidade (onde reside)" required error={errors.city?.message}>
+          <Field
+            label={"Cidade\n(onde reside)"}
+            labelClassName="block min-h-10 whitespace-pre-line"
+            required
+            error={errors.city?.message}
+          >
             <input
               type="text"
               {...register("city")}
@@ -237,7 +247,11 @@ export default function CurriculoForm() {
             />
           </Field>
 
-          <Field label="Bairro" error={errors.neighborhood?.message}>
+          <Field
+            label="Bairro"
+            labelClassName="block min-h-10"
+            error={errors.neighborhood?.message}
+          >
             <input
               type="text"
               {...register("neighborhood")}
@@ -246,7 +260,12 @@ export default function CurriculoForm() {
             />
           </Field>
 
-          <Field label="Estado (onde reside)" required error={errors.state?.message}>
+          <Field
+            label={"Estado\n(onde reside)"}
+            labelClassName="block min-h-10 whitespace-pre-line"
+            required
+            error={errors.state?.message}
+          >
             <select {...register("state")} className={inputClass(!!errors.state)}>
               <option value="">Selecione</option>
               {UF_OPTIONS.map((option) => (

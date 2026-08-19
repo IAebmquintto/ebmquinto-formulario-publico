@@ -225,7 +225,12 @@ export default function ProducaoDeConteudoForm() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field label="Cidade (onde reside)" required error={errors.city?.message}>
+          <Field
+            label={"Cidade\n(onde reside)"}
+            labelClassName="block min-h-10 whitespace-pre-line"
+            required
+            error={errors.city?.message}
+          >
             <input
               type="text"
               {...register("city")}
@@ -233,7 +238,12 @@ export default function ProducaoDeConteudoForm() {
               placeholder="Sua cidade"
             />
           </Field>
-          <Field label="Estado (onde reside)" required error={errors.state?.message}>
+          <Field
+            label={"Estado\n(onde reside)"}
+            labelClassName="block min-h-10 whitespace-pre-line"
+            required
+            error={errors.state?.message}
+          >
             <select {...register("state")} className={inputClass(!!errors.state)}>
               <option value="">Selecione</option>
               {BRAZILIAN_STATE_NAMES.map((option) => (
