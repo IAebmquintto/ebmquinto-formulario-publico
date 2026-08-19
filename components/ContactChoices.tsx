@@ -16,7 +16,7 @@ const CHOICES = [
   },
   {
     href: "/casting",
-    title: "Quero participar de produções de vídeo como casting",
+    title: "Quero participar de\nproduções de vídeo\ncomo casting",
     icon: (
       <path
         d="M3 8.5 21 8.5M3 8.5v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-10M3 8.5l2-4.5h14l2 4.5M7.5 4l1.3 4.5M12 4l1 4.5M16.5 4l1.3 4.5"
@@ -70,7 +70,7 @@ export default function ContactChoices() {
               {choice.icon}
             </svg>
           </span>
-          <span className="mt-4 font-display text-base font-medium text-foreground">
+          <span className="mt-4 whitespace-pre-line font-display text-base font-medium text-foreground">
             {choice.title}
           </span>
           <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-wide text-brand">
