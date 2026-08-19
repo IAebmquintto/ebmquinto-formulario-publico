@@ -344,8 +344,8 @@ export default function CastingForm() {
           </Field>
 
           <Field
-            label="Cidade (onde reside)"
-            labelClassName="block min-h-10"
+            label={"Cidade\n(onde reside)"}
+            labelClassName="block min-h-10 whitespace-pre-line"
             required
             error={errors.city?.message}
           >
@@ -371,8 +371,8 @@ export default function CastingForm() {
           </Field>
 
           <Field
-            label="Estado (onde reside)"
-            labelClassName="block min-h-10"
+            label={"Estado\n(onde reside)"}
+            labelClassName="block min-h-10 whitespace-pre-line"
             required
             error={errors.state?.message}
           >
