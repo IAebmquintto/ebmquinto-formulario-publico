@@ -393,6 +393,7 @@ export default function CastingForm() {
             type="text"
             {...register("profession")}
             className={inputClass(!!errors.profession)}
+            placeholder="Ex: Estudante, vendedor, autônomo"
           />
         </Field>
 
@@ -441,7 +442,7 @@ export default function CastingForm() {
           </Field>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <BoolField
             label="Você já participou de algum vídeo ou gravação antes?"
             required
@@ -476,6 +477,7 @@ export default function CastingForm() {
             {...register("equipmentDetails")}
             rows={2}
             className={inputClass(!!errors.equipmentDetails)}
+            placeholder="Ex: câmera, tripé, microfone de lapela"
           />
         </Field>
 
@@ -488,31 +490,31 @@ export default function CastingForm() {
           />
         </Field>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field
-            label="É beneficiário de algum programa social? Se sim, informe o programa."
-            error={errors.socialProgram?.message}
+        <Field
+          label="É beneficiário de algum programa social? Se sim, informe o programa."
+          error={errors.socialProgram?.message}
+        >
+          <input
+            type="text"
+            {...register("socialProgram")}
+            className={inputClass(!!errors.socialProgram)}
+            placeholder="Ex: Bolsa Família"
+          />
+        </Field>
+
+        <Field label="Valor da diária" error={errors.dailyRateValue?.message}>
+          <select
+            {...register("dailyRateValue")}
+            className={inputClass(!!errors.dailyRateValue)}
           >
-            <input
-              type="text"
-              {...register("socialProgram")}
-              className={inputClass(!!errors.socialProgram)}
-            />
-          </Field>
-          <Field label="Valor da diária" error={errors.dailyRateValue?.message}>
-            <select
-              {...register("dailyRateValue")}
-              className={inputClass(!!errors.dailyRateValue)}
-            >
-              <option value="">Selecione</option>
-              {CASTING_DAILY_RATE_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </Field>
-        </div>
+            <option value="">Selecione</option>
+            {CASTING_DAILY_RATE_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </Field>
 
         <Field
           label="Se preferir, se apresente em um vídeo de até 1 minuto (insira o link)."
