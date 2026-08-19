@@ -330,7 +330,11 @@ export default function CastingForm() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
-          <Field label="Telefone" error={errors.phone?.message}>
+          <Field
+            label="Telefone (DDD + número)"
+            labelClassName="block min-h-10"
+            error={errors.phone?.message}
+          >
             <input
               type="text"
               {...register("phone")}
@@ -339,7 +343,12 @@ export default function CastingForm() {
             />
           </Field>
 
-          <Field label="Cidade (onde reside)" required error={errors.city?.message}>
+          <Field
+            label="Cidade (onde reside)"
+            labelClassName="block min-h-10"
+            required
+            error={errors.city?.message}
+          >
             <input
               type="text"
               {...register("city")}
@@ -348,7 +357,11 @@ export default function CastingForm() {
             />
           </Field>
 
-          <Field label="Bairro" error={errors.neighborhood?.message}>
+          <Field
+            label="Bairro"
+            labelClassName="block min-h-10"
+            error={errors.neighborhood?.message}
+          >
             <input
               type="text"
               {...register("neighborhood")}
@@ -357,7 +370,12 @@ export default function CastingForm() {
             />
           </Field>
 
-          <Field label="Estado (onde reside)" required error={errors.state?.message}>
+          <Field
+            label="Estado (onde reside)"
+            labelClassName="block min-h-10"
+            required
+            error={errors.state?.message}
+          >
             <select {...register("state")} className={inputClass(!!errors.state)}>
               <option value="">Selecione</option>
               {BRAZILIAN_STATE_NAMES.map((option) => (
@@ -425,25 +443,25 @@ export default function CastingForm() {
 
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           <BoolField
-            label="Já gravou antes?"
+            label="Você já participou de algum vídeo ou gravação antes?"
             required
             error={errors.hasPriorExperience?.message}
             {...register("hasPriorExperience")}
           />
           <BoolField
-            label="Fala bem em frente à câmera?"
+            label="Sente-se confortável em falar para a câmera?"
             required
             error={errors.speaksToCamera?.message}
             {...register("speaksToCamera")}
           />
           <BoolField
-            label="Grava fim de semana?"
+            label="Disponibilidade para gravações durante a semana?"
             required
             error={errors.recordsDuringWeek?.message}
             {...register("recordsDuringWeek")}
           />
           <BoolField
-            label="Tem equipamento próprio?"
+            label="Possui equipamento próprio para gravação?"
             required
             error={errors.hasEquipment?.message}
             {...register("hasEquipment")}
@@ -451,7 +469,7 @@ export default function CastingForm() {
         </div>
 
         <Field
-          label="Se sim, quais equipamentos você possui?"
+          label="Se sim, quais equipamentos?"
           error={errors.equipmentDetails?.message}
         >
           <textarea
@@ -461,7 +479,7 @@ export default function CastingForm() {
           />
         </Field>
 
-        <Field label="Horários disponíveis" error={errors.availableHours?.message}>
+        <Field label="Quais horários você tem disponível?" error={errors.availableHours?.message}>
           <input
             type="text"
             {...register("availableHours")}
@@ -472,7 +490,7 @@ export default function CastingForm() {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Field
-            label="Recebe algum benefício de programa social?"
+            label="É beneficiário de algum programa social? Se sim, informe o programa."
             error={errors.socialProgram?.message}
           >
             <input
@@ -496,19 +514,22 @@ export default function CastingForm() {
           </Field>
         </div>
 
-        <Field label="Link de vídeo de apresentação (opcional)" error={errors.videoLink?.message}>
+        <Field
+          label="Se preferir, se apresente em um vídeo de até 1 minuto (insira o link)."
+          error={errors.videoLink?.message}
+        >
           <input
             type="text"
             {...register("videoLink")}
             className={inputClass(!!errors.videoLink)}
             placeholder="https://..."
           />
-          <p className="mt-1 text-xs text-foreground/50">
-            Se preferir, mande um vídeo rápido se apresentando.
-          </p>
         </Field>
 
-        <Field label="Relato de experiência" error={errors.experienceReport?.message}>
+        <Field
+          label="Se sim, conte brevemente como foi essa experiência?"
+          error={errors.experienceReport?.message}
+        >
           <textarea
             {...register("experienceReport")}
             rows={3}
