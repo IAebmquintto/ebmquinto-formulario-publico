@@ -48,8 +48,6 @@ const producaoSchema = z
     email: z.string().trim(),
     phone: z.string().trim(),
     portfolioUrl: z.string().trim(),
-    currentOccupation: z.string().trim(),
-    currentRoutine: z.string().trim(),
     coverageArea: z.string().trim(),
     eventRate: z.string().trim(),
     equipment: z.string().trim(),
@@ -97,8 +95,6 @@ export default function ProducaoDeConteudoForm() {
       email: "",
       phone: "",
       portfolioUrl: "",
-      currentOccupation: "",
-      currentRoutine: "",
       coverageArea: "",
       eventRate: "",
       equipment: "",
@@ -120,9 +116,6 @@ export default function ProducaoDeConteudoForm() {
       if (values.email) formData.append("email", values.email);
       if (values.phone) formData.append("phone", values.phone);
       if (values.portfolioUrl) formData.append("portfolioUrl", values.portfolioUrl);
-      if (values.currentOccupation)
-        formData.append("currentOccupation", values.currentOccupation);
-      if (values.currentRoutine) formData.append("currentRoutine", values.currentRoutine);
       if (values.coverageArea) formData.append("coverageArea", values.coverageArea);
       if (values.eventRate) formData.append("eventRate", values.eventRate);
       if (values.equipment) formData.append("equipment", values.equipment);
@@ -187,7 +180,7 @@ export default function ProducaoDeConteudoForm() {
       <div>
         <BackToChoices />
         <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
-          Produção de Conteúdo
+          Produtores e filmmakers: cadastre-se para projetos.
         </h2>
         <p className="mt-2 text-sm text-foreground/60">
           Capta, edita ou cobre eventos pra gente? Conte pra gente sobre seu trabalho.
@@ -271,7 +264,10 @@ export default function ProducaoDeConteudoForm() {
           </select>
         </Field>
 
-        <Field label="Área de cobertura" error={errors.coverageArea?.message}>
+        <Field
+          label="Qual área (região, estado, cidade) você consegue captar?"
+          error={errors.coverageArea?.message}
+        >
           <input
             type="text"
             {...register("coverageArea")}
@@ -280,26 +276,25 @@ export default function ProducaoDeConteudoForm() {
           />
         </Field>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field label="Preços" error={errors.eventRate?.message}>
-            <input
-              type="text"
-              {...register("eventRate")}
-              className={inputClass(!!errors.eventRate)}
-              placeholder="Ex: R$ 500 por evento"
-            />
-          </Field>
-          <Field label="Link Portfólio/LinkedIn" error={errors.portfolioUrl?.message}>
-            <input
-              type="text"
-              {...register("portfolioUrl")}
-              className={inputClass(!!errors.portfolioUrl)}
-              placeholder="https://..."
-            />
-          </Field>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <BoolField
+            label="Você capta e entrega o material editado?"
+            {...register("capturesAndEdits")}
+          />
+          <BoolField label="Faz cobertura ao vivo?" {...register("doesLiveCoverage")} />
+          <BoolField label="Entrega editado?" {...register("deliversEdited")} />
         </div>
 
-        <Field label="Equipamentos" error={errors.equipment?.message}>
+        <Field label="Qual o valor médio por cobertura de evento/demandas?" error={errors.eventRate?.message}>
+          <input
+            type="text"
+            {...register("eventRate")}
+            className={inputClass(!!errors.eventRate)}
+            placeholder="R$ xxx,xx"
+          />
+        </Field>
+
+        <Field label="Quais equipamentos você possui?" error={errors.equipment?.message}>
           <textarea
             {...register("equipment")}
             rows={2}
@@ -308,40 +303,21 @@ export default function ProducaoDeConteudoForm() {
           />
         </Field>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <BoolField label="Faz cobertura ao vivo?" {...register("doesLiveCoverage")} />
-          <BoolField label="Entrega editado?" {...register("deliversEdited")} />
-          <BoolField label="Capta e edita?" {...register("capturesAndEdits")} />
-        </div>
-
-        <SectionLabel>Sobre você</SectionLabel>
         <Field
-          label="Onde estuda ou trabalha atualmente?"
-          error={errors.currentOccupation?.message}
+          label="Caso possua um link para portfólio insira aqui."
+          error={errors.portfolioUrl?.message}
         >
           <input
             type="text"
-            {...register("currentOccupation")}
-            className={inputClass(!!errors.currentOccupation)}
-            placeholder="Empresa, instituição ou 'não estou trabalhando/estudando'"
-          />
-        </Field>
-
-        <Field
-          label="Fale um pouco sobre sua rotina de trabalho/estudo atual"
-          error={errors.currentRoutine?.message}
-        >
-          <textarea
-            {...register("currentRoutine")}
-            rows={4}
-            className={inputClass(!!errors.currentRoutine)}
-            placeholder="Descreva rapidamente sua rotina atual"
+            {...register("portfolioUrl")}
+            className={inputClass(!!errors.portfolioUrl)}
+            placeholder="https://..."
           />
         </Field>
 
         <SectionLabel>Anexos</SectionLabel>
         <Field
-          label="Apresentação ou currículo (opcional)"
+          label="Apresentação ou currículo insira aqui (PDF ou DOC)."
           error={errors.resume?.message as string | undefined}
         >
           <input
