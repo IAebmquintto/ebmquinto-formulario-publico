@@ -529,18 +529,6 @@ export default function CastingForm() {
           </select>
         </Field>
 
-        <Field
-          label="Se preferir, se apresente em um vídeo de até 1 minuto (insira o link)."
-          error={errors.videoLink?.message}
-        >
-          <input
-            type="text"
-            {...register("videoLink")}
-            className={inputClass(!!errors.videoLink)}
-            placeholder="https://..."
-          />
-        </Field>
-
         <SectionLabel>Anexos</SectionLabel>
         <Field label="Fotos" required error={errors.photos?.message as string | undefined}>
           <input
@@ -554,6 +542,18 @@ export default function CastingForm() {
             Imagens, até {MAX_CASTING_PHOTO_SIZE_MB}MB cada, no máximo {MAX_CASTING_PHOTOS}{" "}
             fotos.
           </p>
+        </Field>
+
+        <Field
+          label="Se preferir, se apresente em um vídeo de até 1 minuto (insira o link)."
+          error={errors.videoLink?.message}
+        >
+          <input
+            type="text"
+            {...register("videoLink")}
+            className={inputClass(!!errors.videoLink)}
+            placeholder="https://..."
+          />
         </Field>
       </div>
 
