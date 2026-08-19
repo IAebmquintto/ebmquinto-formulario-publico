@@ -174,7 +174,8 @@ export default function FornecedoresForm() {
           Cadastro de fornecedor
         </h2>
         <p className="mt-2 text-sm text-foreground/60">
-          Conte pra gente sobre sua empresa e como podemos entrar em contato.
+          ✅ Nosso cadastro de fornecedores é consultado por todas as áreas da EBMQUINTTO no
+          início de cada trabalho. Preencha seus dados de forma completa :).
         </p>
         <div className="mt-6 border-t border-line" />
       </div>
@@ -197,7 +198,7 @@ export default function FornecedoresForm() {
         </Field>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field label="Segmento" required error={errors.segment?.message}>
+          <Field label="Qual o segmento de atuação?" required error={errors.segment?.message}>
             <select {...register("segment")} className={inputClass(!!errors.segment)}>
               <option value="">Selecione</option>
               {SUPPLIER_SEGMENT_OPTIONS.map((option) => (
@@ -267,7 +268,7 @@ export default function FornecedoresForm() {
           </Field>
         </div>
 
-        <Field label="Site ou Instagram" error={errors.website?.message}>
+        <Field label="Link (site ou Instagram)" error={errors.website?.message}>
           <input
             type="text"
             {...register("website")}
@@ -277,7 +278,7 @@ export default function FornecedoresForm() {
         </Field>
 
         <SectionLabel>Sobre a empresa</SectionLabel>
-        <Field label="Diferenciais" error={errors.differentials?.message}>
+        <Field label="Diferenciais / Produtos" error={errors.differentials?.message}>
           <textarea
             {...register("differentials")}
             rows={3}
@@ -287,7 +288,10 @@ export default function FornecedoresForm() {
         </Field>
 
         <SectionLabel>Anexos</SectionLabel>
-        <Field label="Mídia kit (opcional)" error={errors.media?.message as string | undefined}>
+        <Field
+          label="Mídia Kit ou Portfólio (PDF)"
+          error={errors.media?.message as string | undefined}
+        >
           <input
             type="file"
             multiple
