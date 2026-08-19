@@ -29,7 +29,7 @@ const CHOICES = [
   },
   {
     href: "/fornecedores",
-    title: "Sou fornecedor(a)",
+    title: "Quero oferecer meus produtos ou serviços como fornecedor(a)",
     icon: (
       <path
         d="M4 21V8l8-4 8 4v13M4 21h16M9 21v-6h6v6M9 12h.01M15 12h.01M12 12h.01M9 9h.01M15 9h.01M12 9h.01"
@@ -42,7 +42,7 @@ const CHOICES = [
   },
   {
     href: "/producao-de-conteudo",
-    title: "Produção de conteúdo",
+    title: "Quero produzir conteúdo audiovisual, captando ou editando",
     icon: (
       <path
         d="M3 7a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7ZM14 10l6-3.5v11L14 14"
