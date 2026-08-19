@@ -16,7 +16,7 @@ const CHOICES = [
   },
   {
     href: "/casting",
-    title: "Quero fazer casting",
+    title: "Quero participar de produções de vídeo como casting",
     icon: (
       <path
         d="M3 8.5 21 8.5M3 8.5v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-10M3 8.5l2-4.5h14l2 4.5M7.5 4l1.3 4.5M12 4l1 4.5M16.5 4l1.3 4.5"
