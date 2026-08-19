@@ -42,7 +42,7 @@ const CHOICES = [
   },
   {
     href: "/producao-de-conteudo",
-    title: "Quero produzir conteúdo audiovisual, captando ou editando",
+    title: "Quero atuar como produtor de conteúdo, captando ou editando material audiovisual",
     icon: (
       <path
         d="M3 7a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7ZM14 10l6-3.5v11L14 14"
