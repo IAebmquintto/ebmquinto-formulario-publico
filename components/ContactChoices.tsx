@@ -70,10 +70,10 @@ export default function ContactChoices() {
               {choice.icon}
             </svg>
           </span>
-          <span className="mt-4 whitespace-pre-line font-display text-base font-medium text-foreground">
+          <span className="mt-4 whitespace-pre-line font-display text-sm font-medium text-foreground">
             {choice.title}
           </span>
-          <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-wide text-brand">
+          <span className="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-medium uppercase tracking-wide text-brand">
             Começar
             <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 transition group-hover:translate-x-0.5">
               <path
