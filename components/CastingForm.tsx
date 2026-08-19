@@ -331,8 +331,8 @@ export default function CastingForm() {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
           <Field
-            label="Telefone (DDD + número)"
-            labelClassName="block min-h-10"
+            label={"Telefone\n(DDD + número)"}
+            labelClassName="block min-h-10 whitespace-pre-line"
             error={errors.phone?.message}
           >
             <input
