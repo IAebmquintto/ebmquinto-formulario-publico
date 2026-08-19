@@ -442,13 +442,26 @@ export default function CastingForm() {
           </Field>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <BoolField
-            label="Você já participou de algum vídeo ou gravação antes?"
-            required
-            error={errors.hasPriorExperience?.message}
-            {...register("hasPriorExperience")}
+        <BoolField
+          label="Você já participou de algum vídeo ou gravação antes?"
+          required
+          error={errors.hasPriorExperience?.message}
+          {...register("hasPriorExperience")}
+        />
+
+        <Field
+          label="Se sim, conte brevemente como foi essa experiência?"
+          error={errors.experienceReport?.message}
+        >
+          <textarea
+            {...register("experienceReport")}
+            rows={3}
+            className={inputClass(!!errors.experienceReport)}
+            placeholder="Conte rapidamente sua experiência com casting/figuração"
           />
+        </Field>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <BoolField
             label="Sente-se confortável em falar para a câmera?"
             required
@@ -525,18 +538,6 @@ export default function CastingForm() {
             {...register("videoLink")}
             className={inputClass(!!errors.videoLink)}
             placeholder="https://..."
-          />
-        </Field>
-
-        <Field
-          label="Se sim, conte brevemente como foi essa experiência?"
-          error={errors.experienceReport?.message}
-        >
-          <textarea
-            {...register("experienceReport")}
-            rows={3}
-            className={inputClass(!!errors.experienceReport)}
-            placeholder="Conte rapidamente sua experiência com casting/figuração"
           />
         </Field>
 
