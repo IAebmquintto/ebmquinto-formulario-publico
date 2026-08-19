@@ -290,7 +290,7 @@ export default function ProducaoDeConteudoForm() {
             type="text"
             {...register("eventRate")}
             className={inputClass(!!errors.eventRate)}
-            placeholder="Ex: R$ xxx,xx"
+            placeholder="Ex: R$ xx,xx por captação"
           />
         </Field>
 
