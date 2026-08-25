@@ -1,3 +1,4 @@
+import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
 
 /** Cabeçalho de marca no topo das páginas públicas: faixa escura com o logo em destaque. */
@@ -27,7 +28,9 @@ export default function BrandBanner() {
       />
 
       <div className="relative flex items-center px-4 pb-16 pt-6 sm:px-8 sm:pb-20 sm:pt-8">
-        <BrandLogo variant="light" />
+        <Link href="/" className="inline-block">
+          <BrandLogo variant="light" />
+        </Link>
       </div>
     </div>
   );
