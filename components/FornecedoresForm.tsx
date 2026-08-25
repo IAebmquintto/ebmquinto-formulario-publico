@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -134,7 +135,10 @@ export default function FornecedoresForm() {
   if (submitted) {
     return (
       <div className="animate-rise-in relative mx-auto max-w-xl rounded-3xl border border-line bg-ink p-10 text-center shadow-xl shadow-black/30 sm:p-14">
-        <BrandLogo variant="light" />
+        <BackToChoices />
+        <Link href="/" className="inline-block">
+          <BrandLogo variant="light" />
+        </Link>
         <div className="mx-auto mb-5 mt-10 flex h-14 w-14 items-center justify-center rounded-full bg-brand-soft text-brand-dark">
           <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7" aria-hidden="true">
             <path
