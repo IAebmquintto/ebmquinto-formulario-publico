@@ -50,6 +50,25 @@ export function Field({
   );
 }
 
+/**
+ * Campo isca (honeypot) contra bots simples: escondido visualmente e do
+ * leitor de tela, fora da ordem de tab, mas presente no DOM/HTML — um bot que
+ * preenche todo input do form cai nele; um usuário real nunca o vê.
+ */
+export function HoneypotField(props: UseFormRegisterReturn) {
+  return (
+    <div
+      aria-hidden="true"
+      className="absolute left-[-9999px] top-0 h-px w-px overflow-hidden"
+    >
+      <label>
+        Não preencha este campo
+        <input type="text" tabIndex={-1} autoComplete="off" {...props} />
+      </label>
+    </div>
+  );
+}
+
 export function BoolField({
   label,
   required,

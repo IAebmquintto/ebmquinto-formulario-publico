@@ -12,6 +12,7 @@ import BackToChoices from "@/components/BackToChoices";
 import {
   BoolField,
   Field,
+  HoneypotField,
   SectionLabel,
   fileInputClass,
   inputClass,
@@ -70,6 +71,7 @@ const castingSchema = z
     dailyRateValue: z.string(),
     experienceReport: z.string().trim(),
     photos: fileListOrUndefined(),
+    honeypot: z.string().optional(),
   })
   .superRefine((values, ctx) => {
     if (!values.hasPriorExperience) {
@@ -171,6 +173,7 @@ export default function CastingForm() {
       videoLink: "",
       dailyRateValue: "",
       experienceReport: "",
+      honeypot: "",
     },
   });
 
@@ -214,6 +217,7 @@ export default function CastingForm() {
       if (values.photos) {
         Array.from(values.photos).forEach((file) => formData.append("photos", file));
       }
+      if (values.honeypot) formData.append("honeypot", values.honeypot);
       await api.post("/casting-profiles", formData);
       setSubmitted(true);
     } catch (err) {
@@ -266,6 +270,8 @@ export default function CastingForm() {
       noValidate
       className="animate-rise-in relative mx-auto max-w-3xl space-y-8 rounded-3xl border border-line bg-ink p-6 shadow-xl shadow-black/30 sm:p-12"
     >
+      <HoneypotField {...register("honeypot")} />
+
       <div>
         <BackToChoices />
         <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">

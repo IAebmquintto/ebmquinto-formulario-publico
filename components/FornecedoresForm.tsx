@@ -9,7 +9,13 @@ import axios from "axios";
 import api from "@/lib/api";
 import BrandLogo from "@/components/BrandLogo";
 import BackToChoices from "@/components/BackToChoices";
-import { Field, SectionLabel, fileInputClass, inputClass } from "@/components/form/fields";
+import {
+  Field,
+  HoneypotField,
+  SectionLabel,
+  fileInputClass,
+  inputClass,
+} from "@/components/form/fields";
 import {
   ACCEPTED_SUPPLIER_MEDIA_EXTENSIONS,
   ACCEPTED_SUPPLIER_MEDIA_MIME_TYPES,
@@ -42,6 +48,7 @@ const fornecedorSchema = z
     address: z.string().trim(),
     differentials: z.string().trim(),
     media: fileListOrUndefined(),
+    honeypot: z.string().optional(),
   })
   .superRefine((values, ctx) => {
     if (values.media && values.media.length > MAX_SUPPLIER_MEDIA_FILES) {
@@ -100,6 +107,7 @@ export default function FornecedoresForm() {
       website: "",
       address: "",
       differentials: "",
+      honeypot: "",
     },
   });
 
@@ -120,6 +128,7 @@ export default function FornecedoresForm() {
       if (values.media) {
         Array.from(values.media).forEach((file) => formData.append("media", file));
       }
+      if (values.honeypot) formData.append("honeypot", values.honeypot);
       await api.post("/suppliers", formData);
       setSubmitted(true);
     } catch (err) {
@@ -172,6 +181,8 @@ export default function FornecedoresForm() {
       noValidate
       className="animate-rise-in relative mx-auto max-w-3xl space-y-8 rounded-3xl border border-line bg-ink p-6 shadow-xl shadow-black/30 sm:p-12"
     >
+      <HoneypotField {...register("honeypot")} />
+
       <div>
         <BackToChoices />
         <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">

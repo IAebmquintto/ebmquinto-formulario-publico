@@ -12,6 +12,7 @@ import BackToChoices from "@/components/BackToChoices";
 import {
   BoolField,
   Field,
+  HoneypotField,
   SectionLabel,
   fileInputClass,
   inputClass,
@@ -56,6 +57,7 @@ const producaoSchema = z
     deliversEdited: z.enum(["", "sim", "nao"]),
     capturesAndEdits: z.enum(["", "sim", "nao"]),
     resume: fileListOrUndefined(),
+    honeypot: z.string().optional(),
   })
   .superRefine((values, ctx) => {
     if (values.resume) {
@@ -102,6 +104,7 @@ export default function ProducaoDeConteudoForm() {
       doesLiveCoverage: "",
       deliversEdited: "",
       capturesAndEdits: "",
+      honeypot: "",
     },
   });
 
@@ -132,6 +135,7 @@ export default function ProducaoDeConteudoForm() {
       if (values.resume) {
         Array.from(values.resume).forEach((file) => formData.append("resume", file));
       }
+      if (values.honeypot) formData.append("honeypot", values.honeypot);
       await api.post("/content-producers", formData);
       setSubmitted(true);
     } catch (err) {
@@ -181,6 +185,8 @@ export default function ProducaoDeConteudoForm() {
       noValidate
       className="animate-rise-in relative mx-auto max-w-3xl space-y-8 rounded-3xl border border-line bg-ink p-6 shadow-xl shadow-black/30 sm:p-12"
     >
+      <HoneypotField {...register("honeypot")} />
+
       <div>
         <BackToChoices />
         <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">

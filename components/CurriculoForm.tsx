@@ -9,7 +9,13 @@ import axios from "axios";
 import api from "@/lib/api";
 import BrandLogo from "@/components/BrandLogo";
 import BackToChoices from "@/components/BackToChoices";
-import { Field, SectionLabel, fileInputClass, inputClass } from "@/components/form/fields";
+import {
+  Field,
+  HoneypotField,
+  SectionLabel,
+  fileInputClass,
+  inputClass,
+} from "@/components/form/fields";
 import {
   ACCEPTED_RESUME_EXTENSIONS,
   ACCEPTED_RESUME_MIME_TYPES,
@@ -44,6 +50,7 @@ const curriculoSchema = z
     currentOccupation: z.string().trim(),
     currentRoutine: z.string().trim().min(1, "Conte um pouco sobre sua rotina atual"),
     resume: fileListOrUndefined(),
+    honeypot: z.string().optional(),
   })
   .superRefine((values, ctx) => {
     if (!values.email.trim() || !z.string().email().safeParse(values.email).success) {
@@ -105,6 +112,7 @@ export default function CurriculoForm() {
       portfolioUrl: "",
       currentOccupation: "",
       currentRoutine: "",
+      honeypot: "",
     },
   });
 
@@ -126,6 +134,7 @@ export default function CurriculoForm() {
         formData.append("currentOccupation", values.currentOccupation);
       formData.append("currentRoutine", values.currentRoutine);
       formData.append("resume", values.resume![0]);
+      if (values.honeypot) formData.append("honeypot", values.honeypot);
       await api.post("/candidates", formData);
       setSubmitted(true);
     } catch (err) {
@@ -178,6 +187,8 @@ export default function CurriculoForm() {
       noValidate
       className="animate-rise-in relative mx-auto max-w-3xl space-y-8 rounded-3xl border border-line bg-ink p-6 shadow-xl shadow-black/30 sm:p-12"
     >
+      <HoneypotField {...register("honeypot")} />
+
       <div>
         <BackToChoices />
         <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
