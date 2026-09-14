@@ -2,19 +2,6 @@ import Link from "next/link";
 
 const CHOICES = [
   {
-    href: "/curriculo",
-    title: "Quero enviar meu currículo",
-    icon: (
-      <path
-        d="M8 3h6l4 4v13a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm5 0v5h5M9 12h6M9 15.5h6M9 8.5h2"
-        stroke="currentColor"
-        strokeWidth={1.6}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    ),
-  },
-  {
     href: "/casting",
     title: "Quero participar de\nproduções de vídeo\ncomo casting",
     icon: (
@@ -57,7 +44,7 @@ const CHOICES = [
 
 export default function ContactChoices() {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
       {CHOICES.map((choice, index) => (
         <Link
           key={choice.href}
