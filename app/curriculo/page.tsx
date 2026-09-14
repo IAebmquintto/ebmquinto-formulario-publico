@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function CurriculoPage() {
   return (
     <main className="min-h-screen bg-background">
-      <BrandBanner logoHref="https://web-production-ec44b.up.railway.app" />
+      <BrandBanner />
       <div className="px-4 pb-20 sm:pb-28">
         <div className="-mt-14 sm:-mt-16">
           <CurriculoForm />

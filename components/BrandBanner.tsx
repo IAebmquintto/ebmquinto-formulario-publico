@@ -2,7 +2,7 @@ import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
 
 /** Cabeçalho de marca no topo das páginas públicas: faixa escura com o logo em destaque. */
-export default function BrandBanner({ logoHref = "/" }: { logoHref?: string }) {
+export default function BrandBanner() {
   return (
     <div className="relative w-full overflow-hidden bg-ink">
       <div
@@ -24,7 +24,7 @@ export default function BrandBanner({ logoHref = "/" }: { logoHref?: string }) {
       />
 
       <div className="relative flex items-center px-4 pb-16 pt-6 sm:px-8 sm:pb-20 sm:pt-8">
-        <Link href={logoHref} className="inline-block">
+        <Link href="/" className="inline-block">
           <BrandLogo variant="light" />
         </Link>
       </div>
