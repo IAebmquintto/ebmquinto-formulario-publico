@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,7 +7,7 @@ import { z } from "zod";
 import axios from "axios";
 import api from "@/lib/api";
 import BrandLogo from "@/components/BrandLogo";
-import BackToChoices from "@/components/BackToChoices";
+import BackToSite from "@/components/BackToSite";
 import {
   Field,
   HoneypotField,
@@ -150,10 +149,10 @@ export default function CurriculoForm() {
   if (submitted) {
     return (
       <div className="animate-rise-in relative mx-auto max-w-xl rounded-3xl border border-line bg-ink p-10 text-center shadow-xl shadow-black/30 sm:p-14">
-        <BackToChoices />
-        <Link href="/" className="inline-block">
+        <BackToSite />
+        <a href="https://web-production-ec44b.up.railway.app" className="inline-block">
           <BrandLogo variant="light" />
-        </Link>
+        </a>
         <div className="mx-auto mb-5 mt-10 flex h-14 w-14 items-center justify-center rounded-full bg-brand-soft text-brand-dark">
           <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7" aria-hidden="true">
             <path
@@ -190,7 +189,7 @@ export default function CurriculoForm() {
       <HoneypotField {...register("honeypot")} />
 
       <div>
-        <BackToChoices />
+        <BackToSite />
         <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
           Envie seu currículo
         </h2>
