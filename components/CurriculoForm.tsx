@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -92,6 +92,31 @@ type CurriculoFormValues = z.infer<typeof curriculoSchema>;
 export default function CurriculoForm() {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+
+  // "Área de interesse" agora é gerenciável pela gestão no painel admin (fica
+  // salva no backend, não é mais só uma lista fixa aqui) — busca a lista atual
+  // ao carregar a página; se a chamada falhar, mantém a lista fixa abaixo como
+  // fallback (não pode deixar o formulário sem opções por causa disso).
+  const [desiredPositionOptions, setDesiredPositionOptions] = useState<
+    readonly string[]
+  >(DESIRED_POSITION_OPTIONS);
+
+  useEffect(() => {
+    let active = true;
+    api
+      .get<string[]>("/candidates/desired-position-options")
+      .then((response) => {
+        if (active && response.data.length > 0) {
+          setDesiredPositionOptions(response.data);
+        }
+      })
+      .catch(() => {
+        // Falha silenciosa — mantém a lista fixa (DESIRED_POSITION_OPTIONS).
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const {
     register,
@@ -304,7 +329,7 @@ export default function CurriculoForm() {
               className={`${inputClass(!!errors.desiredPosition)} uppercase`}
             >
               <option value="">Selecione</option>
-              {DESIRED_POSITION_OPTIONS.map((option) => (
+              {desiredPositionOptions.map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>
