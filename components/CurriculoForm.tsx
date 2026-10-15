@@ -42,7 +42,7 @@ const curriculoSchema = z
     email: z.string().trim(),
     phone: z.string().trim(),
     city: z.string().trim().min(1, "Informe a cidade"),
-    neighborhood: z.string().trim(),
+    neighborhood: z.string().trim().min(1, "Informe o bairro"),
     state: z.string().min(1, "Selecione o estado"),
     desiredPosition: z.string().min(1, "Selecione a área de interesse"),
     experienceTime: z.string().min(1, "Selecione uma opção"),
@@ -290,6 +290,7 @@ export default function CurriculoForm() {
           <Field
             label="Bairro"
             labelClassName="block min-h-10"
+            required
             error={errors.neighborhood?.message}
           >
             <input

@@ -51,7 +51,7 @@ const castingSchema = z
     fullName: z.string().trim().min(1, "Informe o nome completo"),
     birthDate: z.string().min(1, "Informe a data de nascimento"),
     city: z.string().trim().min(1, "Informe a cidade"),
-    neighborhood: z.string().trim(),
+    neighborhood: z.string().trim().min(1, "Informe o bairro"),
     state: z.string().min(1, "Selecione o estado"),
     email: z.string().trim(),
     phone: z.string().trim(),
@@ -370,6 +370,7 @@ export default function CastingForm() {
           <Field
             label="Bairro"
             labelClassName="block min-h-10"
+            required
             error={errors.neighborhood?.message}
           >
             <input
