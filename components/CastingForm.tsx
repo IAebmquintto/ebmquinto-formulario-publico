@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import axios from "axios";
 import api from "@/lib/api";
+import { birthDateSchema, brDateToIso, maskBrDate } from "@/lib/date";
 import BrandLogo from "@/components/BrandLogo";
 import BackToChoices from "@/components/BackToChoices";
 import {
@@ -49,7 +50,7 @@ const fileListOrUndefined = () =>
 const castingSchema = z
   .object({
     fullName: z.string().trim().min(1, "Informe o nome completo"),
-    birthDate: z.string().min(1, "Informe a data de nascimento"),
+    birthDate: birthDateSchema,
     city: z.string().trim().min(1, "Informe a cidade"),
     neighborhood: z.string().trim().min(1, "Informe o bairro"),
     state: z.string().min(1, "Selecione o estado"),
@@ -176,13 +177,14 @@ export default function CastingForm() {
       honeypot: "",
     },
   });
+  const birthDateField = register("birthDate");
 
   async function onSubmit(values: CastingFormValues) {
     setServerError(null);
     try {
       const formData = new FormData();
       formData.append("fullName", values.fullName);
-      formData.append("birthDate", values.birthDate);
+      formData.append("birthDate", brDateToIso(values.birthDate) ?? values.birthDate);
       formData.append("city", values.city);
       if (values.neighborhood) formData.append("neighborhood", values.neighborhood);
       formData.append("state", values.state);
@@ -323,9 +325,17 @@ export default function CastingForm() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Field label="Data de nascimento" required error={errors.birthDate?.message}>
             <input
-              type="date"
-              {...register("birthDate")}
+              type="text"
+              inputMode="numeric"
+              autoComplete="bday"
+              maxLength={10}
+              {...birthDateField}
+              onChange={(event) => {
+                event.target.value = maskBrDate(event.target.value);
+                birthDateField.onChange(event);
+              }}
               className={inputClass(!!errors.birthDate)}
+              placeholder="dd/mm/aaaa"
             />
           </Field>
 
